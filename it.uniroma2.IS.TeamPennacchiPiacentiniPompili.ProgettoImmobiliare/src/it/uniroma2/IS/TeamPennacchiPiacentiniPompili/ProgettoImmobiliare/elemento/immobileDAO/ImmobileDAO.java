@@ -63,7 +63,7 @@ public class ImmobileDAO extends DBAccessManager implements ImmobileDAOI {
 				query += " and ";
 			}
 
-			if (entry.getKey() == CampoSchedaDiRicercaEnum.FASCIAPREZZO) {
+			if (entry.getKey() == CampoSchedaDiRicercaEnum.FASCIA_PREZZO) {
 				switch (entry.getValue()) {
 				case "FASCIA0":
 					query += " prezzo <= 100000";
@@ -75,7 +75,7 @@ public class ImmobileDAO extends DBAccessManager implements ImmobileDAOI {
 					query += " prezzo > 300000";
 					break;
 				}
-			} else if (entry.getKey() == CampoSchedaDiRicercaEnum.FASCIAMQ) {
+			} else if (entry.getKey() == CampoSchedaDiRicercaEnum.FASCIA_MQ) {
 				switch (entry.getValue()) {
 				case "FASCIA0":
 					query += " mq <= 50";
@@ -122,9 +122,9 @@ public class ImmobileDAO extends DBAccessManager implements ImmobileDAOI {
 
 		System.out.println("\nVisualizza immobili con filtro");
 		Map<CampoSchedaDiRicercaEnum, String> mappaFiltro = new HashMap<CampoSchedaDiRicercaEnum, String>();
-		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIAMQ,
+		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIA_MQ,
 				FasciaMQEnum.FASCIA3.toString());
-		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIAPREZZO,
+		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIA_PREZZO,
 				FasciaPrezzoEnum.FASCIA2.toString());
 		immobiles = dao.visualizzaImmobili(mappaFiltro);
 		for (Immobile i : immobiles) {
