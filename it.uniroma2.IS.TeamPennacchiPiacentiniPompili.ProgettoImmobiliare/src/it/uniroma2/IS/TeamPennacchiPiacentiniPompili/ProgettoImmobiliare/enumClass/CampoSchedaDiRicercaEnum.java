@@ -6,5 +6,5 @@ package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.enumCl
  * @author Team Pennacchi Piacentini Pompili
  */
 public enum CampoSchedaDiRicercaEnum {
-	PROVINCIA, CITTA, ZONA, FASCIAPREZZO, FASCIAMQ, TIPOLOGIA, SUBTIPOLOGIA
+	PROVINCIA, CITTA, ZONA, FASCIA_PREZZO, FASCIA_MQ, TIPOLOGIA, SUBTIPOLOGIA
 }

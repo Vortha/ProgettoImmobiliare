@@ -1,5 +1,6 @@
 package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.elemento.schedaDiRicercaDAO;
 
+import java.sql.SQLException;
 import java.util.Map;
 
 import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.elemento.SchedaDiRicerca;
@@ -19,8 +20,10 @@ public interface SchedaDiRicercaDAOI {
 	 * @param mappaScheda
 	 *            - campi compilati dal fruitore
 	 * @return true se la scheda di ricerca è stata creata, false altrimenti
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public boolean creaSchedaDiRicerca(SchedaDiRicerca scheda);
+	public boolean creaSchedaDiRicerca(SchedaDiRicerca scheda) throws ClassNotFoundException, SQLException;
 
 	/**
 	 * Dato l'id della scheda di ricerca, restituisce la scheda di ricerca che
@@ -29,8 +32,10 @@ public interface SchedaDiRicercaDAOI {
 	 * @param idSchedaDiRicerca
 	 *            - l'id della scheda di ricerca che si vuole visualizzare
 	 * @return la scheda di ricerca voluta
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public SchedaDiRicerca visualizzaSchedaDiRicerca(int idScheda);
+	public SchedaDiRicerca visualizzaSchedaDiRicerca(int idScheda) throws ClassNotFoundException, SQLException;
 
 	public boolean modificaSchedaDiRicerca(SchedaDiRicerca scheda);
 

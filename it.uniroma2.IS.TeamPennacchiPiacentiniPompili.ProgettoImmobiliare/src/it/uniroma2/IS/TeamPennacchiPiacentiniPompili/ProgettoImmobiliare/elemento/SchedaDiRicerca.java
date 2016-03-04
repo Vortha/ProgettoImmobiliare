@@ -4,6 +4,7 @@ import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.enumCla
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * Classe che rappresenta una scheda di ricerca all'interno dell'applicazione.
@@ -32,7 +33,24 @@ public class SchedaDiRicerca {
 	private String subTipologia;
 	/** Mappa contenente gli attributi di una scheda di ricerca **/
 	private Map<CampoSchedaDiRicercaEnum, String> mappaFiltro;
-	
+
+	public SchedaDiRicerca(Map<CampoSchedaDiRicercaEnum, String> mappaFiltro) {
+		for (Entry<CampoSchedaDiRicercaEnum, String> entry : mappaFiltro
+				.entrySet()) {
+			
+		}
+		this.provincia = mappaFiltro.get(CampoSchedaDiRicercaEnum.PROVINCIA);
+		this.citta = mappaFiltro.get(CampoSchedaDiRicercaEnum.CITTA);
+		this.zona = mappaFiltro.get(CampoSchedaDiRicercaEnum.ZONA);
+		this.fasciaPrezzo = Integer.parseInt(mappaFiltro
+				.get(CampoSchedaDiRicercaEnum.FASCIA_PREZZO));
+		this.fasciaMQ = Integer.parseInt(mappaFiltro
+				.get(CampoSchedaDiRicercaEnum.FASCIA_MQ));
+		this.tipologia = mappaFiltro.get(CampoSchedaDiRicercaEnum.TIPOLOGIA);
+		this.subTipologia = mappaFiltro
+				.get(CampoSchedaDiRicercaEnum.SUBTIPOLOGIA);
+	}
+
 	public SchedaDiRicerca() {
 		mappaFiltro = new HashMap<CampoSchedaDiRicercaEnum, String>();
 	}
@@ -70,7 +88,7 @@ public class SchedaDiRicerca {
 
 	public void setFasciaPrezzo(int fasciaPrezzo) {
 		this.fasciaPrezzo = fasciaPrezzo;
-		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIAPREZZO,
+		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIA_PREZZO,
 				Integer.toString(fasciaPrezzo));
 	}
 
@@ -80,7 +98,7 @@ public class SchedaDiRicerca {
 
 	public void setFasciaMQ(int fasciaMQ) {
 		this.fasciaMQ = fasciaMQ;
-		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIAMQ,
+		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIA_MQ,
 				Integer.toString(fasciaMQ));
 	}
 
@@ -109,4 +127,13 @@ public class SchedaDiRicerca {
 	public void setMappaFiltro(Map<CampoSchedaDiRicercaEnum, String> mappaFiltro) {
 		this.mappaFiltro = mappaFiltro;
 	}
+
+	@Override
+	public String toString() {
+		return "SchedaDiRicerca [provincia=" + provincia + ", citta=" + citta
+				+ ", zona=" + zona + ", fasciaPrezzo=" + fasciaPrezzo
+				+ ", fasciaMQ=" + fasciaMQ + ", tipologia=" + tipologia
+				+ ", subTipologia=" + subTipologia + "]";
+	}
+
 }
