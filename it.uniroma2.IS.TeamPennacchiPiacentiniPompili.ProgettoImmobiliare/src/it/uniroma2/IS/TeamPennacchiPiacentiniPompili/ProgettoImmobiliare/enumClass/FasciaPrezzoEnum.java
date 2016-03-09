@@ -7,10 +7,12 @@ package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.enumCl
  * 
  */
 public enum FasciaPrezzoEnum {
-	/** Prezzo <= 100000 **/
+	/** Prezzo = null **/
 	FASCIA0,
-	/** 100000 <= Prezzo <= 300000 **/
+	/** Prezzo <= 100000 **/
 	FASCIA1,
+	/** 100000 <= Prezzo <= 300000 **/
+	FASCIA2,
 	/** Prezzo > 300000 **/
-	FASCIA2
+	FASCIA3
 }

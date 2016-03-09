@@ -4,6 +4,7 @@ import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.enumCla
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * Classe che rappresenta una scheda di ricerca all'interno dell'applicazione.
@@ -16,6 +17,8 @@ import java.util.Map;
  * 
  */
 public class SchedaDiRicerca {
+	/** identificativo della scheda di ricerca **/
+	private int idScheda;
 	/** Provincia di appartenenza dell'immobile cercato **/
 	private String provincia;
 	/** Città di appartenenza dell'immobile cercato **/
@@ -31,10 +34,61 @@ public class SchedaDiRicerca {
 	/** Sub tipologia dell'immobile cercato **/
 	private String subTipologia;
 	/** Mappa contenente gli attributi di una scheda di ricerca **/
-	private Map<CampoSchedaDiRicercaEnum, String> mappaFiltro;
-	
+	private Map<CampoSchedaDiRicercaEnum, Object> mappaFiltro;
+
+	public SchedaDiRicerca(Map<CampoSchedaDiRicercaEnum, Object> mappaFiltro) {
+		for (Entry<CampoSchedaDiRicercaEnum, Object> entry : mappaFiltro
+				.entrySet()) {
+			this.mappaFiltro = mappaFiltro;
+			switch (entry.getKey()) {
+			case ID_SCHEDA:
+				idScheda = (Integer) entry.getValue();
+				break;
+
+			case PROVINCIA:
+				provincia = (String) entry.getValue();
+				break;
+
+			case CITTA:
+				citta = (String) entry.getValue();
+				break;
+
+			case ZONA:
+				zona = (String) entry.getValue();
+				break;
+
+			case FASCIA_PREZZO:
+				fasciaPrezzo = (Integer) entry.getValue();
+				break;
+
+			case FASCIA_MQ:
+				fasciaMQ = (Integer) entry.getValue();
+				break;
+
+			case TIPOLOGIA:
+				tipologia = (String) entry.getValue();
+				break;
+
+			case SUBTIPOLOGIA:
+				subTipologia = (String) entry.getValue();
+				break;
+
+			default:
+				throw new IllegalArgumentException();
+			}
+		}
+	}
+
 	public SchedaDiRicerca() {
-		mappaFiltro = new HashMap<CampoSchedaDiRicercaEnum, String>();
+		mappaFiltro = new HashMap<CampoSchedaDiRicercaEnum, Object>();
+	}
+
+	public int getIdScheda() {
+		return idScheda;
+	}
+
+	public void setIdScheda(int idScheda) {
+		this.idScheda = idScheda;
 	}
 
 	public String getProvincia() {
@@ -70,7 +124,7 @@ public class SchedaDiRicerca {
 
 	public void setFasciaPrezzo(int fasciaPrezzo) {
 		this.fasciaPrezzo = fasciaPrezzo;
-		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIAPREZZO,
+		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIA_PREZZO,
 				Integer.toString(fasciaPrezzo));
 	}
 
@@ -80,7 +134,7 @@ public class SchedaDiRicerca {
 
 	public void setFasciaMQ(int fasciaMQ) {
 		this.fasciaMQ = fasciaMQ;
-		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIAMQ,
+		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIA_MQ,
 				Integer.toString(fasciaMQ));
 	}
 
@@ -102,11 +156,19 @@ public class SchedaDiRicerca {
 		mappaFiltro.put(CampoSchedaDiRicercaEnum.SUBTIPOLOGIA, subTipologia);
 	}
 
-	public Map<CampoSchedaDiRicercaEnum, String> getMappaFiltro() {
+	public Map<CampoSchedaDiRicercaEnum, Object> getMappaFiltro() {
 		return mappaFiltro;
 	}
 
-	public void setMappaFiltro(Map<CampoSchedaDiRicercaEnum, String> mappaFiltro) {
+	public void setMappaFiltro(Map<CampoSchedaDiRicercaEnum, Object> mappaFiltro) {
 		this.mappaFiltro = mappaFiltro;
+	}
+
+	@Override
+	public String toString() {
+		return "SchedaDiRicerca [idScheda=" + idScheda + ", provincia=" + provincia + ", citta=" + citta
+				+ ", zona=" + zona + ", fasciaPrezzo=" + fasciaPrezzo
+				+ ", fasciaMQ=" + fasciaMQ + ", tipologia=" + tipologia
+				+ ", subTipologia=" + subTipologia + "]";
 	}
 }

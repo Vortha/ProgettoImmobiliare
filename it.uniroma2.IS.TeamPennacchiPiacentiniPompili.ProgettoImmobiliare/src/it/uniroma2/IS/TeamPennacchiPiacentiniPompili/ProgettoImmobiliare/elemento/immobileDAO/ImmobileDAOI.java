@@ -27,7 +27,7 @@ public interface ImmobileDAOI {
 	 * @throws ClassNotFoundException
 	 */
 	public List<Immobile> visualizzaImmobili(
-			Map<CampoSchedaDiRicercaEnum, String> mappaFiltro)
+			Map<CampoSchedaDiRicercaEnum, Object> mappaFiltro)
 			throws ClassNotFoundException, SQLException;
 
 	/**

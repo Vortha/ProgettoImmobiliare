@@ -7,12 +7,14 @@ package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.enumCl
  * 
  */
 public enum FasciaMQEnum {
-	/** mq < 50 **/
+	/** mq = null **/
 	FASCIA0,
-	/** 50 <= mq <= 100 **/
+	/** mq < 50 **/
 	FASCIA1,
-	/** 100 <= mq <= 200 **/
+	/** 50 <= mq <= 100 **/
 	FASCIA2,
+	/** 100 <= mq <= 200 **/
+	FASCIA3,
 	/** mq > 200 **/
-	FASCIA3
+	FASCIA4
 }

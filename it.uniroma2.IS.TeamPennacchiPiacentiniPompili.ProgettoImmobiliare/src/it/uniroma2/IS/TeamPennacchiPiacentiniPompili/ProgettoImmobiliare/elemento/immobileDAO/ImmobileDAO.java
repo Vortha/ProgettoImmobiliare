@@ -50,11 +50,11 @@ public class ImmobileDAO extends DBAccessManager implements ImmobileDAOI {
 	 */
 	@Override
 	public List<Immobile> visualizzaImmobili(
-			Map<CampoSchedaDiRicercaEnum, String> mappaFiltro)
+			Map<CampoSchedaDiRicercaEnum, Object> mappaFiltro)
 			throws ClassNotFoundException, SQLException {
 		String query = "select * from immobile";
 		boolean first = true;
-		for (Entry<CampoSchedaDiRicercaEnum, String> entry : mappaFiltro
+		for (Entry<CampoSchedaDiRicercaEnum, Object> entry : mappaFiltro
 				.entrySet()) {
 			if (first) {
 				query += " where ";
@@ -63,30 +63,30 @@ public class ImmobileDAO extends DBAccessManager implements ImmobileDAOI {
 				query += " and ";
 			}
 
-			if (entry.getKey() == CampoSchedaDiRicercaEnum.FASCIAPREZZO) {
-				switch (entry.getValue()) {
-				case "FASCIA0":
+			if (entry.getKey() == CampoSchedaDiRicercaEnum.FASCIA_PREZZO) {
+				switch ((String) entry.getValue()) {
+				case "FASCIA1":
 					query += " prezzo <= 100000";
 					break;
-				case "FASCIA1":
+				case "FASCIA2":
 					query += " prezzo between 100000 and 300000";
 					break;
-				case "FASCIA2":
+				case "FASCIA3":
 					query += " prezzo > 300000";
 					break;
 				}
-			} else if (entry.getKey() == CampoSchedaDiRicercaEnum.FASCIAMQ) {
-				switch (entry.getValue()) {
-				case "FASCIA0":
+			} else if (entry.getKey() == CampoSchedaDiRicercaEnum.FASCIA_MQ) {
+				switch ((String) entry.getValue()) {
+				case "FASCIA1":
 					query += " mq <= 50";
 					break;
-				case "FASCIA1":
+				case "FASCIA2":
 					query += " mq between 50 and 100";
 					break;
-				case "FASCIA2":
+				case "FASCIA3":
 					query += " mq between 100 and 200";
 					break;
-				case "FASCIA3":
+				case "FASCIA4":
 					query += " mq > 200";
 					break;
 				}
@@ -95,7 +95,7 @@ public class ImmobileDAO extends DBAccessManager implements ImmobileDAOI {
 						+ entry.getValue().toString() + "'";
 			}
 		}
-		System.out.println(query);
+
 		List<Immobile> listaImmobili = new ArrayList<>();
 		ResultSet resultSet = select(query);
 		while (resultSet.next()) {
@@ -121,11 +121,11 @@ public class ImmobileDAO extends DBAccessManager implements ImmobileDAOI {
 		}
 
 		System.out.println("\nVisualizza immobili con filtro");
-		Map<CampoSchedaDiRicercaEnum, String> mappaFiltro = new HashMap<CampoSchedaDiRicercaEnum, String>();
-		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIAMQ,
-				FasciaMQEnum.FASCIA3.toString());
-		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIAPREZZO,
-				FasciaPrezzoEnum.FASCIA2.toString());
+		Map<CampoSchedaDiRicercaEnum, Object> mappaFiltro = new HashMap<CampoSchedaDiRicercaEnum, Object>();
+		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIA_MQ,
+				FasciaMQEnum.FASCIA1.toString());
+		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIA_PREZZO,
+				FasciaPrezzoEnum.FASCIA1.toString());
 		immobiles = dao.visualizzaImmobili(mappaFiltro);
 		for (Immobile i : immobiles) {
 			System.out.println(i);
