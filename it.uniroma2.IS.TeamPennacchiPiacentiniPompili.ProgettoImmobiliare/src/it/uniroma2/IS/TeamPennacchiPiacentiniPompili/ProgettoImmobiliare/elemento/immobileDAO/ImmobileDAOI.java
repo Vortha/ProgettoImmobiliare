@@ -22,7 +22,7 @@ public interface ImmobileDAOI {
 	 * 
 	 * @param mappaFiltro
 	 *            - filtro degli immobili da ricercare
-	 * @return List&lt;Immobile&gt; la lista degli immobili
+	 * @return List&lt;Immobile&gt; - la lista degli immobili
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
@@ -33,7 +33,7 @@ public interface ImmobileDAOI {
 	/**
 	 * Restituisce la lista di tutti gli immobili presenti nell'applicazione.
 	 * 
-	 * @return List&lt;Immobile&gt; la lista degli immobili
+	 * @return List&lt;Immobile&gt; - la lista degli immobili
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */

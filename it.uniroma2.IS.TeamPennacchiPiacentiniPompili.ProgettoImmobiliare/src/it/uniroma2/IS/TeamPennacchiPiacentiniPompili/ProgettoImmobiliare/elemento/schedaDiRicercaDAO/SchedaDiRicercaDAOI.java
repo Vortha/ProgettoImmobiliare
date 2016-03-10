@@ -29,7 +29,7 @@ public interface SchedaDiRicercaDAOI {
 	 * 
 	 * @param idSchedaDiRicerca
 	 *            - l'id della scheda di ricerca che si vuole visualizzare
-	 * @return la scheda di ricerca voluta
+	 * @return SchedaDiRicerca - la scheda di ricerca voluta
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 * @throws IllegalAccessException 
