@@ -6,3 +6,5 @@ Implementate le funzionalità dell'Agente:
 Modificato SchedaDiRicerca.creaSchedaDiRicerca(Map<CampoSchedaDiRicercaEnum, Object> mappaFiltro) in SchedaDiRicerca.creaSchedaDiRicerca(SchedaDiRicerca scheda).
 
 È stato pensato che un Agente può vedere tutti i Clienti a lui assegnati, anche quelli che sono in attesa dell'eliminazione dell'account, che possono quindi ancora riattivarlo e verranno visualizzati su view con un qualcosa che li distingua dagli altri (tipo un pallino giallo accanto). Il periodo è di 30 giorni ed è stato già creato l'evento sul database che si occupa di ciò.
+
+<h2>Da dover testare i metodi di AgenteDAO e visualizzaMatch di ImmobileDAO</h2>
