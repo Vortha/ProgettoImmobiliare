@@ -7,7 +7,7 @@ package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.elemen
  * 
  */
 public class Immobile {
-	/** id dell'immobile **/
+	/** identificativo dell'immobile **/
 	private int idImmobile;
 	/** Provincia di appartenenza dell'immobile **/
 	private String provincia;
@@ -50,6 +50,14 @@ public class Immobile {
 		this.fotoPath = fotoPath;
 	}
 
+	public int getIdImmobile() {
+		return idImmobile;
+	}
+	
+	public void setIdImmobile(int idImmobile) {
+		this.idImmobile = idImmobile;
+	}
+	
 	public String getProvincia() {
 		return provincia;
 	}

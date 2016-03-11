@@ -62,7 +62,7 @@ public class FruitoreDAO extends DBAccessManager implements FruitoreDAOI {
 	public static void main(String[] args) throws ClassNotFoundException,
 			SQLException {
 		FruitoreDAO dao = new FruitoreDAO();
-		System.out.println("Login: " + dao.login("vigliano@uniroma2.it", "ciacia"));
+		System.out.println("Login: " + dao.login("pomp@pomp.it", "pomp"));
 		
 		Map<DatiPersonaliEnum, String> datiPersonali = new HashMap<>();
 		datiPersonali.put(DatiPersonaliEnum.TELEFONO, "3358969453");
