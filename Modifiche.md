@@ -1,8 +1,8 @@
 <h1>Modifiche</h1>
 Implementate le funzionalità dell'Agente:
 <ul><li>
--visualizzaCliente (class diagram) è diventato public List<Cliente> visualizzaClienti(Agente agente) in quanto un Agente visualizza la lista di tutti i Clienti a lui assegnati e poi sceglie il singolo Cliente da visualizzare; questo si riduce ad una singola richiesta, cioè l'Agente dalla view richiede la lista di tutti i Clienti a lui assegnati, quando gli viene fornita clicca su uno dei Clienti e le informazioni di quel Cliente sono già presenti nella view, senza dover effettuare un'altra richiesta all'applicazione;</li><li>
--visualizzaMatchCliente (class diagram) è stato implementato come public List<Immobile> visualizzaMatch(Cliente cliente) per "EXPERT" in quanto ImmobileDAO possiede le informazioni sugli immobili e quindi i metodi per gli immobili. Questo nuovo metodo raggruppa anche il metodo visualizzaMatchPersonale (class diagram) del ClienteMobile.</li></ul>
+visualizzaCliente (class diagram) è diventato public List<Cliente> visualizzaClienti(Agente agente) in quanto un Agente visualizza la lista di tutti i Clienti a lui assegnati e poi sceglie il singolo Cliente da visualizzare; questo si riduce ad una singola richiesta, cioè l'Agente dalla view richiede la lista di tutti i Clienti a lui assegnati, quando gli viene fornita clicca su uno dei Clienti e le informazioni di quel Cliente sono già presenti nella view, senza dover effettuare un'altra richiesta all'applicazione;</li><li>
+visualizzaMatchCliente (class diagram) è stato implementato come public List<Immobile> visualizzaMatch(Cliente cliente) per "EXPERT" in quanto ImmobileDAO possiede le informazioni sugli immobili e quindi i metodi per gli immobili. Questo nuovo metodo raggruppa anche il metodo visualizzaMatchPersonale (class diagram) del ClienteMobile.</li></ul>
 
 Modificato SchedaDiRicerca.creaSchedaDiRicerca(Map<CampoSchedaDiRicercaEnum, Object> mappaFiltro) in SchedaDiRicerca.creaSchedaDiRicerca(SchedaDiRicerca scheda).
 <br><br>
