@@ -23,7 +23,7 @@ public class DBLocator {
 	private static DBLocator me = null;
 
 	/**
-	 * Istanzia il Singleton
+	 * Istanzia il driver Singleton.
 	 * 
 	 * @throws ClassNotFoundException
 	 */
@@ -32,7 +32,7 @@ public class DBLocator {
 	}
 
 	/**
-	 * Ottiene un riferimento all'oggetto della classe
+	 * Ottiene un riferimento all'oggetto della classe.
 	 * 
 	 * @throws ClassNotFoundException
 	 */
@@ -41,7 +41,7 @@ public class DBLocator {
 	}
 
 	/**
-	 * Restituisce il Singleton. Se non istanziato, lo istanzia prima.
+	 * Restituisce il driver Singleton. Se non istanziato, lo istanzia prima.
 	 * 
 	 * @return DBLocator - restituisce il Singleton
 	 * @throws ClassNotFoundException

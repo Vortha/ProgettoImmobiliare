@@ -7,7 +7,7 @@ package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.elemen
  * 
  */
 public class Immobile {
-	/** id dell'immobile **/
+	/** identificativo dell'immobile **/
 	private int idImmobile;
 	/** Provincia di appartenenza dell'immobile **/
 	private String provincia;
@@ -32,6 +32,37 @@ public class Immobile {
 	/** Path della cartella contenente le immagini dell'immobile **/
 	private String fotoPath;
 
+	/** Costruttore per testing e crea un immobile tipo. **/
+	public Immobile() {
+		provincia = "RM";
+		citta = "ROMA";
+		zona = "Lunghezza";
+		camere = 20;
+		bagni = 3;
+		tipologia = "Appartamento";
+		subTipologia = "Loft";
+		prezzo = 1000000;
+		mq = 700;
+		descrizione = "La casa dei tuoi sogni! Vieni a vederla e sogna con noi!";
+		fotoPath = "";
+	}
+
+	public Immobile(String provincia, String citta, String zona, int camere,
+			int bagni, String tipologia, String subTipologia, double prezzo,
+			int mq, String descrizione, String fotoPath) {
+		this.provincia = provincia;
+		this.citta = citta;
+		this.zona = zona;
+		this.camere = camere;
+		this.bagni = bagni;
+		this.tipologia = tipologia;
+		this.subTipologia = subTipologia;
+		this.prezzo = prezzo;
+		this.mq = mq;
+		this.descrizione = descrizione;
+		this.fotoPath = fotoPath;
+	}
+
 	public Immobile(int idImmobile, String provincia, String citta,
 			String zona, int camere, int bagni, String tipologia,
 			String subTipologia, double prezzo, int mq, String descrizione,
@@ -48,6 +79,14 @@ public class Immobile {
 		this.mq = mq;
 		this.descrizione = descrizione;
 		this.fotoPath = fotoPath;
+	}
+
+	public int getIdImmobile() {
+		return idImmobile;
+	}
+
+	public void setIdImmobile(int idImmobile) {
+		this.idImmobile = idImmobile;
 	}
 
 	public String getProvincia() {
