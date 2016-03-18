@@ -44,7 +44,7 @@ public interface FruitoreDAOI {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	boolean modificaDatiPersonali(String email,
+	public boolean modificaDatiPersonali(String email,
 			Map<DatiPersonaliEnum, String> datiPersonali)
 			throws ClassNotFoundException, SQLException;
 }
