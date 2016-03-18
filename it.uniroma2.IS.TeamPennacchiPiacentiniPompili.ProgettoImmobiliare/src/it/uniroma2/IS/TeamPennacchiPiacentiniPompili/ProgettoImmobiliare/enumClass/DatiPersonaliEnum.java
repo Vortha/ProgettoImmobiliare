@@ -6,5 +6,5 @@ package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.enumCl
  * @author Team Pennacchi Piacentini Pompili
  */
 public enum DatiPersonaliEnum {
-	NOME, COGNOME, TELEFONO, EMAIL, PASSWORD
+	NOME, COGNOME, TELEFONO, EMAIL, PASSWORD, ELIMINATO, DATA_ELIMINAZIONE
 }
