@@ -6,5 +6,12 @@
 
 	<package name="estate" extends="struts-default">
 
+		<action name="registrati"
+			class="it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.utente.action.RegistratiAction"
+			method="execute">
+			<result name="success">/index.jsp</result>
+			<result name="error"></result>
+		</action>
+
 	</package>
 </struts>

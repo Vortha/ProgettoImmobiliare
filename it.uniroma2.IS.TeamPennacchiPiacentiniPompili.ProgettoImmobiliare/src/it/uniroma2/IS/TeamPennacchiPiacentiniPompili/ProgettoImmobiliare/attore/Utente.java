@@ -1,25 +1,24 @@
 package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore;
 
 /**
- * Superclasse che rappresenta il profilo generico di una persona all'interno
- * dell'applicazione.
+ * Classe che rappresenta un generico Utente all'interno dell'applicazione.
  * 
  * @author Team Pennacchi Piacentini Pompili
  * 
  */
-public class Fruitore {
-	/** Nome del fruitore **/
-	private String nome;
-	/** Cognome del fruitore **/
-	private String cognome;
-	/** Numero di telefono del fruitore **/
-	private String telefono;
-	/** Email del fruitore **/
-	private String email;
-	/** Password del fruitore **/
-	private String password;
+public class Utente {
+	/** nome dell'utente che si vuole registrare **/
+	String nome;
+	/** cognome dell'utente che si vuole registrare **/
+	String cognome;
+	/** numero di telefono dell'utente che si vuole registrare **/
+	String telefono;
+	/** email dell'utente che si vuole registrare **/
+	String email;
+	/** password dell'utente che si vuole registrare **/
+	String password;
 
-	public Fruitore(String nome, String cognome, String telefono, String email,
+	public Utente(String nome, String cognome, String telefono, String email,
 			String password) {
 		this.nome = nome;
 		this.cognome = cognome;
@@ -70,9 +69,9 @@ public class Fruitore {
 
 	@Override
 	public String toString() {
-		return "Fruitore [nome=" + nome + ", cognome=" + cognome
-				+ ", telefono=" + telefono + ", email=" + email + ", password="
-				+ password;
+		return "Utente [nome=" + nome + ", cognome=" + cognome + ", telefono="
+				+ telefono + ", email=" + email + ", password=" + password
+				+ "]";
 	}
 
 }
