@@ -9,12 +9,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="style/style.css">
-<title>Agenzia PPP</title>
+<title>Agenzia PPP - Ricerca</title>
 </head>
 <body>
 	<header>
 		<div class="sinistra cf">
-			<a href="<s:url value="/" />"><b>Agenzia Immobiliare PPP</b></a>
+			<a href="<s:url value="/" />">Agenzia Immobiliare PPP</a>
 		</div>
 		<div class="destra cf">
 			<s:if test="#session.clienteLoggato != null || #session.agenteLoggato != null">
@@ -28,7 +28,32 @@
 	<div class="container">
 		<h1>Vetrina</h1>
 		<div id="immobili" class="cf">
-			<s:action name="visualizzaImmobili" executeResult="true" />
+			<table class="table table-hover">
+				<s:iterator value="immobili">
+					<tr>
+						<td>
+							<div id="foto-casa" class="cf">
+								<s:if test="fotoPath == null">
+									<img class="img-thumbnail" src="<s:url value="/img/immobili/default.png"/>" alt="Immagine casa" />
+								</s:if>
+							</div>
+							<div id="caratteristiche">
+								<b>Città:</b> <s:property value="citta"/><br>
+								<b>Camere:</b> <s:property value="camere"/><br>
+								<b>Bagni:</b>  <s:property value="bagni"/><br>
+								<b>Prezzo:</b> €<s:property value="prezzo"/><br>
+								<b>MQ:</b>  <s:property value="mq"/>
+							</div>
+						</td>
+					</tr>
+				</s:iterator>
+			</table>
+			<div id="errore">
+	           	<s:actionerror/>
+	        </div>
+	        <div id="messaggio">
+	        	<s:actionmessage/>
+	        </div>
 		</div>
 		<div id="ricerca" class="cf">
 			<h1>Ricerca</h1>

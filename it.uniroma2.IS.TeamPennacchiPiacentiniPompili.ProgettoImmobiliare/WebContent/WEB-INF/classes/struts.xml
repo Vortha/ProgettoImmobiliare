@@ -5,13 +5,57 @@
 	<constant name="struts.devMode" value="true"></constant>
 
 	<package name="estate" extends="struts-default">
-
+	
+		<action name="visualizzaImmobili"
+			class="it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.fruitore.action.VisualizzaImmobiliAction"
+			method="execute">
+			<result name="success" type="dispatcher">
+				<param name="location">/immobili/</param>
+			</result>
+			<result name="error" type="dispatcher">
+				<param name="location">/immobili/</param>
+			</result>
+		</action>
+		
+		<action name="ricercaImmobili"
+			class="it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.utente.action.RicercaImmobiliAction"
+			method="execute">
+			<result name="success" type="dispatcher">
+				<param name="location">/ricerca/</param>
+			</result>
+			<result name="error" type="dispatcher">
+				<param name="location">/ricerca/</param>
+			</result>
+		</action>
+		
 		<action name="registrati"
 			class="it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.utente.action.RegistratiAction"
 			method="execute">
-			<result name="success">/index.jsp</result>
-			<result name="error"></result>
+			<result name="success" type="redirect">
+				<param name="location">/</param>
+			</result>
+			<result name="error" type="dispatcher">
+				<param name="location">/registrazione/</param>
+			</result>
 		</action>
-
+	
+		<action name="login"
+			class="it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.fruitore.action.LoginAction"
+			method="execute">
+			<result name="success" type="redirect">
+				<param name="location">/</param>
+			</result>
+			<result name="error" type="dispatcher">
+				<param name="location">/login/</param>
+			</result>
+		</action>
+		
+		<action name="logout"
+			class="it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.fruitore.action.LogoutAction"
+			method="execute">
+			<result name="success" type="redirect">
+				<param name="location">/</param>
+			</result>
+		</action>
 	</package>
 </struts>

@@ -139,7 +139,6 @@ public class ImmobileDAO extends DBAccessManager implements ImmobileDAOI {
 						+ entry.getValue().toString() + "' ";
 			}
 		}
-
 		List<Immobile> listaImmobili = new ArrayList<>();
 		ResultSet resultSet = select(query);
 		while (resultSet.next()) {

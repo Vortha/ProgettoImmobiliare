@@ -1,5 +1,9 @@
 package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.fruitore.DAO;
 
+import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.Agente;
+import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.Amministratore;
+import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.Cliente;
+import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.Fruitore;
 import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.database.DBAccessManager;
 import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.enumClass.DatiPersonaliEnum;
 
@@ -19,15 +23,28 @@ import java.util.Map.Entry;
 public class FruitoreDAO extends DBAccessManager implements FruitoreDAOI {
 
 	@Override
-	public boolean login(String email, String password)
+	public Fruitore login(String email, String password)
 			throws ClassNotFoundException, SQLException {
 		String query = "select * from fruitore where email = '" + email
 				+ "' and password = '" + password + "'";
 		ResultSet resultSet = select(query);
 		if (resultSet.first() == true) {
-			return true;
+			if (resultSet.getBoolean("cliente")
+					|| resultSet.getBoolean("cliente_mobile")) {
+				return new Cliente(resultSet.getString("nome"),
+						resultSet.getString("cognome"),
+						resultSet.getString("telefono"), email, "");
+			} else if (resultSet.getBoolean("agente")) {
+				return new Agente(resultSet.getString("nome"),
+						resultSet.getString("cognome"),
+						resultSet.getString("telefono"), email, "");
+			} else if (resultSet.getBoolean("amministratore")) {
+				return new Amministratore(resultSet.getString("nome"),
+						resultSet.getString("cognome"),
+						resultSet.getString("telefono"), email, "");
+			}
 		}
-		return false;
+		return null;
 	}
 
 	@Override
@@ -63,7 +80,7 @@ public class FruitoreDAO extends DBAccessManager implements FruitoreDAOI {
 			SQLException {
 		FruitoreDAO dao = new FruitoreDAO();
 		System.out.println("Login: " + dao.login("pomp@pomp.it", "pomp"));
-		
+
 		Map<DatiPersonaliEnum, String> datiPersonali = new HashMap<>();
 		datiPersonali.put(DatiPersonaliEnum.TELEFONO, "3358969453");
 		datiPersonali.put(DatiPersonaliEnum.PASSWORD, "superalmone");
@@ -71,6 +88,8 @@ public class FruitoreDAO extends DBAccessManager implements FruitoreDAOI {
 		datiPersonali.put(DatiPersonaliEnum.EMAIL, "vigliano@uniroma2.it");
 		datiPersonali.put(DatiPersonaliEnum.NOME, "Lory");
 		datiPersonali.put(DatiPersonaliEnum.PASSWORD, "ciacia");
-		System.out.println("Modifica dati personali: " + dao.modificaDatiPersonali("vigliano@uniroma2.it", datiPersonali));
+		System.out.println("Modifica dati personali: "
+				+ dao.modificaDatiPersonali("vigliano@uniroma2.it",
+						datiPersonali));
 	}
 }

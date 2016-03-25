@@ -8,20 +8,26 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../style/style.css">
 <title>Agenzia PPP - Login</title>
 </head>
 <body>
 	<header>
-		<div class="left">
-			<a href="../"><img alt="Logo" src=""></a>
+		<div class="sinistra cf">
+			<a href="<s:url value="/" />">Agenzia Immobiliare PPP</a>
 		</div>
-		<div class="right">
-			Login | <a href="../registrazione/">Registrati</a>
-		</div>
+		<s:if test="#session.clienteLoggato != null || #session.agenteLoggato != null">
+			<jsp:forward page="../" />
+		</s:if>
+		<s:else>
+			<div class="destra cf">
+				<b>Login</b> | <a href="<s:url value="/registrazione/"/>">Registrati</a>
+			</div>
+		</s:else>
 	</header>
 	
-	<div class="wrapper">
-		<form role="form">
+	<div class="container contenitore-form">
+		<form action="login" id="loginForm" method="post">
 			<div class="form-group">
 				<label>Email: <input type="email" name="email" class="form-control" required autofocus></label>
 			</div>
@@ -32,6 +38,9 @@
 				<input type="submit" class="btn btn-default" value="Accedi">
 			</div>
 		</form>
+		<div id="errore">
+			<s:actionerror/>
+		</div>
 	</div>
 </body>
 </html>

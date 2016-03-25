@@ -36,6 +36,13 @@ public class SchedaDiRicerca {
 	/** Mappa contenente gli attributi di una scheda di ricerca **/
 	private Map<CampoSchedaDiRicercaEnum, Object> mappaFiltro;
 
+	/**
+	 * Istanzia i campi presenti nella mappa data come parametro.<br>
+	 * mappaFiltro è una mappa &lt;CampoSchedaDiRicercaEnum, Object&gt;
+	 * 
+	 * @param mappaFiltro
+	 *            - mappa che contiene i campi da inizializzare
+	 */
 	public SchedaDiRicerca(Map<CampoSchedaDiRicercaEnum, Object> mappaFiltro) {
 		for (Entry<CampoSchedaDiRicercaEnum, Object> entry : mappaFiltro
 				.entrySet()) {
@@ -166,9 +173,10 @@ public class SchedaDiRicerca {
 
 	@Override
 	public String toString() {
-		return "SchedaDiRicerca [idScheda=" + idScheda + ", provincia=" + provincia + ", citta=" + citta
-				+ ", zona=" + zona + ", fasciaPrezzo=" + fasciaPrezzo
-				+ ", fasciaMQ=" + fasciaMQ + ", tipologia=" + tipologia
-				+ ", subTipologia=" + subTipologia + "]";
+		return "SchedaDiRicerca [idScheda=" + idScheda + ", provincia="
+				+ provincia + ", citta=" + citta + ", zona=" + zona
+				+ ", fasciaPrezzo=" + fasciaPrezzo + ", fasciaMQ=" + fasciaMQ
+				+ ", tipologia=" + tipologia + ", subTipologia=" + subTipologia
+				+ "]";
 	}
 }
