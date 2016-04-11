@@ -142,4 +142,22 @@ Terminate le implementazioni per la WebApp, scritto tutto il javadoc (anche rico
 
 <h2>Altro</h2>
 Caricata la WebApp sulla macchina virtuale, si può procedere all'interfacciamento tra Android e Struts2.<br>
-<b>Problema!:</b> l'eliminazione dell'immobile non elimina le immagini associate ad esso.
+<b>Problema!:</b> l'eliminazione dell'immobile non elimina le immagini associate ad esso.<br><br>
+<p>
+  <b>Accesso lato cliente</b><br>
+    <em>indirizzo:</em> /login/<br>
+    <em>email:</em> prova@prova.it<br>
+    <em>password:</em> prova1A
+</p>
+<p>
+  <b>Accesso lato agente</b><br>
+    <em>indirizzo:</em> /login/<br>
+    <em>email:</em> prova1@prova.it<br>
+    <em>password:</em> prova1A
+</p>
+<p>
+  <b>Accesso lato amministratore</b><br>
+    <em>indirizzo:</em> /admin/<br>
+    <em>email:</em> pompili@gmail.com</br>
+    <em>password:</em> qwerty1A
+</p>
