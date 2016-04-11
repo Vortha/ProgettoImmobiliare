@@ -7,6 +7,7 @@ header {
 	padding: 10px 20px;
     border-bottom: 1px solid #797979;
  	box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
+ 	z-index: 2;
 }
 
 header .sinistra {
@@ -26,18 +27,24 @@ header .destra {
 	float: right;
 }
 
+table a:link, table a:visited, table a:hover {
+	text-decoration: none;
+	color: inherit;
+}
+
 .container {
-	padding-top: 50px;
+	padding-top: 40px;
 }
 
 #immobili {
+	padding-top: 65px;
 	float: left;
 	width: 600px;
 }
 
 #ricerca {
 	position: fixed;
-	top: 50px;
+	top: 40px;
 	right: 100px;
 	line-height: 15px;
 }
@@ -61,6 +68,20 @@ header .destra {
 	line-height: 30px;
 }
 
+#foto-casa-tot {
+	float: left;
+}
+
+#foto-casa-tot img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
+
+#caratteristiche-tot {
+	line-height: 30px;
+}
+
 .cf:before {
     display: block;
 }
@@ -71,4 +92,36 @@ header .destra {
 
 .contenitore-form {
 	max-width: 300px;
+}
+
+#titolo {
+	position: fixed;
+	background: white;
+	width: 625px;
+    border-bottom: 1px solid #797979;
+ 	box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
+}
+
+#azioni {
+	width: 600px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#azioni a:link, #azioni a:visited {
+	text-decoration: none;
+	color: inherit;
+}
+
+#crea-immobile {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+#immobili-admin tr {
+	cursor: pointer;
+}
+
+#immobili-admin th {
+	cursor: default;
 }

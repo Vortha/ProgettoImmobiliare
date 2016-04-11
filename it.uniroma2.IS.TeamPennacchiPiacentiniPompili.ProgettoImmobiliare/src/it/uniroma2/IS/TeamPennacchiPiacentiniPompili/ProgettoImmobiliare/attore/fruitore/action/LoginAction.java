@@ -23,11 +23,11 @@ import com.opensymphony.xwork2.ActionSupport;
  * 
  */
 public class LoginAction extends ActionSupport implements SessionAware {
-	/** email inserita nel form dal fruitore **/
+	/** Email del fruitore */
 	private String email;
-	/** email inserita nel form dal fruitore **/
+	/** Password del fruitore */
 	private String password;
-	/** mappa della sessione che tiene traccia del login */
+	/** Mappa della sessione che tiene traccia del login */
 	private SessionMap<String, Object> sessionMap;
 
 	/**
@@ -36,7 +36,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	 * clienteLoggato se ha effettuato l'accesso un cliente;<br>
 	 * agenteLoggato se ha effettuato l'accesso un agente;<br>
 	 * amministratoreLoggato se ha effettuato l'accesso un amministratore.<br>
-	 * Il valore, invece è l'oggetto fruitore.
+	 * Il valore, invece, è l'oggetto fruitore.
 	 * 
 	 * @return success se è stato effettuato il login, error altrimenti
 	 */
@@ -57,7 +57,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				return SUCCESS;
 			} else if (fruitore.getClass() == Amministratore.class) {
 				sessionMap.put("amministratoreLoggato", fruitore);
-				return SUCCESS;
+				return "successAmministratore";
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

@@ -17,6 +17,9 @@
 			<a href="<s:url value="/" />"><b>Agenzia Immobiliare PPP</b></a>
 		</div>
 		<div class="destra cf">
+			<s:if test="#session.agenteLoggato != null">
+				<s:a href="visualizzaClienti">Portfolio Clienti</s:a> | 
+			</s:if>
 			<s:if test="#session.clienteLoggato != null || #session.agenteLoggato != null">
 				<a href="logout">Logout</a>
 			</s:if>
@@ -26,7 +29,7 @@
 		</div>
 	</header>
 	<div class="container">
-		<h1>Vetrina</h1>
+		<div id="titolo"><h1>Vetrina</h1></div>
 		<div id="immobili" class="cf">
 			<s:action name="visualizzaImmobili" executeResult="true" />
 		</div>

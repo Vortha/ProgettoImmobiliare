@@ -8,7 +8,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="../script/js/check.js"></script>
-		<link rel="stylesheet" href="../style/style.css">
+		<link rel="stylesheet" href="<s:url value="/style/style.css" />">
         <title>Agenzia PPP - Registrazione</title>
     </head>
     <body>
@@ -17,7 +17,7 @@
 			<a href="<s:url value="/" />">Agenzia Immobiliare PPP</a>
 		</div>
 		<s:if test="#session.clienteLoggato != null || #session.agenteLoggato != null">
-			<a href="logout">Logout</a>
+			<jsp:forward page="../" />
 		</s:if>
 		<s:else>
 			<div class="destra cf">

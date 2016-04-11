@@ -23,7 +23,7 @@ public class SchedaDiRicercaDAO extends DBAccessManager implements
 
 	/*
 	 * (non-Javadoc) Itera sui campi della mappa (scheda.getMappaFiltro()) e li
-	 * aggiunge nell'insert, con il valore associato.
+	 * aggiunge nell'insert con il valore associato.
 	 * 
 	 * @see
 	 * it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.elemento
@@ -112,30 +112,5 @@ public class SchedaDiRicercaDAO extends DBAccessManager implements
 				+ idScheda;
 
 		return update(query);
-	}
-
-	public static void main(String[] args) throws ClassNotFoundException,
-			SQLException, IllegalArgumentException, IllegalAccessException {
-		SchedaDiRicercaDAO dao = new SchedaDiRicercaDAO();
-		SchedaDiRicerca ricerca = new SchedaDiRicerca();
-		ricerca.setCitta("roma");
-		ricerca.setFasciaPrezzo(0);
-		System.out.println("Crea scheda di ricerca: "
-				+ dao.creaSchedaDiRicerca(ricerca));
-
-		System.out.println("\nVisualizza scheda di ricerca: ");
-		System.out.println(dao.visualizzaSchedaDiRicerca(32));
-
-		System.out.println("\nModifica scheda di ricerca: ");
-		SchedaDiRicerca scheda = new SchedaDiRicerca();
-		scheda.setIdScheda(1);
-		scheda.setCitta("zg");
-		scheda.setTipologia("superalmone");
-		System.out.println(dao.modificaSchedaDiRicerca(scheda));
-
-		System.out.println("\n" + dao.visualizzaSchedaDiRicerca(2));
-		System.out.println("Elimina scheda di ricerca: ");
-		System.out.println(dao.eliminaSchedaDiRicerca(1));
-		System.out.println(dao.visualizzaSchedaDiRicerca(2));
 	}
 }

@@ -24,5 +24,13 @@ public interface UtenteDAOI {
 	public boolean registrati(Utente utente) throws ClassNotFoundException,
 			SQLException;
 
+	/**
+	 * Effettua la riattivazione dell'account di un utente che era registrato
+	 * all'applicazione come cliente.
+	 * 
+	 * @param utente
+	 *            - l'utente del quale riattivare l'account
+	 * @return true se la riattivazione ha avuto successo, false altrimenti
+	 */
 	public boolean riattivaAccount(Utente utente);
 }

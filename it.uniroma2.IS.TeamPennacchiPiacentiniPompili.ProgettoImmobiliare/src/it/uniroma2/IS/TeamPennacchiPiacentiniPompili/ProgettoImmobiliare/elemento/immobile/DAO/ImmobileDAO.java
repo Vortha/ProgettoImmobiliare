@@ -24,10 +24,6 @@ import java.util.Map.Entry;
  */
 public class ImmobileDAO extends DBAccessManager implements ImmobileDAOI {
 
-	/**
-	 * {@inheritDoc}<br>
-	 * Lo aggiunge al DB.
-	 */
 	@Override
 	public boolean creaImmobile(Immobile immobile)
 			throws ClassNotFoundException, SQLException {
@@ -37,17 +33,24 @@ public class ImmobileDAO extends DBAccessManager implements ImmobileDAOI {
 				+ ", " + immobile.getBagni() + ", '" + immobile.getTipologia()
 				+ "', '" + immobile.getSubTipologia() + "', "
 				+ immobile.getPrezzo() + ", " + immobile.getMq() + ", '"
-				+ immobile.getDescrizione() + "', '" + immobile.getfotoPath()
+				+ immobile.getDescrizione() + "', '" + immobile.getFoto()
 				+ "')";
 
 		return update(query);
 	}
 
 	@Override
+	public int ultimoId() throws ClassNotFoundException, SQLException {
+		String query = "select max(id_immobile) as id_immobile from immobile";
+		ResultSet resultSet = select(query);
+		resultSet.next();
+		return resultSet.getInt("id_immobile");
+	}
+
+	@Override
 	public boolean modificaImmobile(int id_immobile, Immobile immobile)
 			throws ClassNotFoundException, SQLException {
-		String query = "update immobile set id_immobile = "
-				+ immobile.getIdImmobile() + ", provincia = '"
+		String query = "update immobile set provincia = '"
 				+ immobile.getProvincia() + "', citta = '"
 				+ immobile.getCitta() + "', zona = '" + immobile.getZona()
 				+ "', camere = '" + immobile.getCamere() + "', bagni = '"
@@ -56,9 +59,11 @@ public class ImmobileDAO extends DBAccessManager implements ImmobileDAOI {
 				+ immobile.getSubTipologia() + "', prezzo = '"
 				+ immobile.getPrezzo() + "', mq = " + immobile.getMq()
 				+ ", descrizione = '" + immobile.getDescrizione()
-				+ "', foto = '" + immobile.getfotoPath() + "'";
+				+ "', foto = '" + immobile.getFoto() + "'"
+				+ " where id_immobile = " + id_immobile;
 
-		return update(query);
+		update(query);
+		return true;
 	}
 
 	@Override
@@ -86,6 +91,69 @@ public class ImmobileDAO extends DBAccessManager implements ImmobileDAOI {
 		}
 
 		return listaImmobili;
+	}
+
+	@Override
+	public Immobile visualizzaImmobile(int idImmobile)
+			throws ClassNotFoundException, SQLException {
+		String query = "select * from immobile where id_immobile = "
+				+ idImmobile;
+		ResultSet resultSet = select(query);
+		resultSet.next();
+		Immobile immobile = new Immobile(resultSet.getInt("id_immobile"),
+				resultSet.getString("provincia"), resultSet.getString("citta"),
+				resultSet.getString("zona"), resultSet.getInt("camere"),
+				resultSet.getInt("bagni"), resultSet.getString("tipologia"),
+				resultSet.getString("subtipologia"),
+				resultSet.getDouble("prezzo"), resultSet.getInt("mq"),
+				resultSet.getString("descrizione"), resultSet.getString("foto"));
+		return immobile;
+	}
+
+	@Override
+	public boolean aggiungiPreferiti(Cliente cliente, Immobile immobile)
+			throws ClassNotFoundException, SQLException {
+		String query = "insert into preferiti values('" + cliente.getEmail()
+				+ "', " + immobile.getIdImmobile() + ")";
+
+		return update(query);
+	}
+
+	@Override
+	public List<Immobile> visualizzaPreferiti(Cliente cliente)
+			throws ClassNotFoundException, SQLException {
+		List<Immobile> preferiti = new ArrayList<Immobile>();
+
+		String query = "select * from preferiti where email = '"
+				+ cliente.getEmail() + "'";
+
+		ResultSet resultSet = select(query);
+		ResultSet resultSet2;
+		while (resultSet.next()) {
+			query = "select * from immobile where id_immobile = "
+					+ resultSet.getInt("id_immobile");
+			resultSet2 = select(query);
+
+			resultSet2.next();
+			preferiti.add(new Immobile(resultSet2.getInt(1), resultSet2
+					.getString(2), resultSet2.getString(3), resultSet2
+					.getString(4), resultSet2.getInt(5), resultSet2.getInt(6),
+					resultSet2.getString(7), resultSet2.getString(8),
+					resultSet2.getDouble(9), resultSet2.getInt(10), resultSet2
+							.getString(11), resultSet2.getString(12)));
+		}
+
+		return preferiti;
+	}
+
+	@Override
+	public boolean modificaPreferiti(Cliente cliente, Immobile immobile)
+			throws ClassNotFoundException, SQLException {
+		String query = "delete from preferiti where email = '"
+				+ cliente.getEmail() + "' and id_immobile = "
+				+ immobile.getIdImmobile();
+
+		return update(query);
 	}
 
 	@Override
@@ -154,7 +222,7 @@ public class ImmobileDAO extends DBAccessManager implements ImmobileDAOI {
 	}
 
 	/*
-	 * (non-Javadoc) seleziona le schede di ricerca associate al cliente e, per
+	 * (non-Javadoc) Seleziona le schede di ricerca associate al cliente e, per
 	 * ogni risultato, crea un oggetto SchedaDiRicerca passandogli la
 	 * mappaFiltro creata dalla select, infine aggiunge ad una lista di immobili
 	 * gli immobili filtrati dalla scheda di ricerca richiamando il metodo
@@ -198,36 +266,5 @@ public class ImmobileDAO extends DBAccessManager implements ImmobileDAOI {
 		}
 
 		return immobili;
-	}
-
-	public static void main(String[] args) throws ClassNotFoundException,
-			SQLException {
-		ImmobileDAO dao = new ImmobileDAO();
-
-		System.out.println("Visualizza immobili: ");
-		List<Immobile> immobiles = dao.visualizzaImmobili();
-		for (Immobile i : immobiles) {
-			System.out.println(i);
-		}
-
-		System.out.println("\nVisualizza immobili con filtro");
-		Map<CampoSchedaDiRicercaEnum, Object> mappaFiltro = new HashMap<CampoSchedaDiRicercaEnum, Object>();
-		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIA_MQ, 1);
-		mappaFiltro.put(CampoSchedaDiRicercaEnum.FASCIA_PREZZO, 2);
-		SchedaDiRicerca scheda = new SchedaDiRicerca();
-		scheda.setMappaFiltro(mappaFiltro);
-		immobiles = dao.visualizzaImmobili(scheda);
-		for (Immobile i : immobiles) {
-			System.out.println(i);
-		}
-
-		Cliente cliente = new Cliente("", "", "", "pomp@pomp.it", "");
-		System.out.println("Visualizza match: " + dao.visualizzaMatch(cliente));
-
-		Immobile immobile = new Immobile();
-		System.out.println("Crea immobile: " + dao.creaImmobile(immobile));
-		immobile.setIdImmobile(1);
-		dao.modificaImmobile(1, immobile);
-		dao.eliminaImmobile(1);
 	}
 }

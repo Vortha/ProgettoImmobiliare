@@ -7,16 +7,16 @@ package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore
  * 
  */
 public class Utente {
-	/** nome dell'utente che si vuole registrare **/
-	String nome;
-	/** cognome dell'utente che si vuole registrare **/
-	String cognome;
-	/** numero di telefono dell'utente che si vuole registrare **/
-	String telefono;
-	/** email dell'utente che si vuole registrare **/
-	String email;
-	/** password dell'utente che si vuole registrare **/
-	String password;
+	/** Nome dell'utente che si vuole registrare */
+	private String nome;
+	/** Cognome dell'utente che si vuole registrare */
+	private String cognome;
+	/** Numero di telefono dell'utente che si vuole registrare */
+	private String telefono;
+	/** Email dell'utente che si vuole registrare */
+	private String email;
+	/** Password dell'utente che si vuole registrare */
+	private String password;
 
 	public Utente(String nome, String cognome, String telefono, String email,
 			String password) {

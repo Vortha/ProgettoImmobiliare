@@ -19,17 +19,17 @@ import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.
  * 
  */
 public class RegistratiAction extends ActionSupport implements SessionAware {
-	/** nome inserito nel form dall'utente **/
+	/** Nome inserito nel form dall'utente */
 	private String nome;
-	/** cognome inserito nel form dall'utente **/
+	/** Cognome inserito nel form dall'utente */
 	private String cognome;
-	/** telefono inserito nel form dall'utente **/
+	/** Telefono inserito nel form dall'utente */
 	private String telefono;
-	/** email inserita nel form dall'utente **/
+	/** Email inserita nel form dall'utente */
 	private String email;
-	/** password inserita nel form dall'utente **/
+	/** Password inserita nel form dall'utente */
 	private String password;
-	/** mappa della sessione che tiene traccia del login */
+	/** Mappa della sessione che tiene traccia del login */
 	private SessionMap<String, Object> sessionMap;
 
 	/**

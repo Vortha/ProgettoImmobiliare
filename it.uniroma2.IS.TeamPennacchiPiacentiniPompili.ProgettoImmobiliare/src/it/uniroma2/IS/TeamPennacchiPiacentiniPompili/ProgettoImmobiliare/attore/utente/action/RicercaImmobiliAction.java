@@ -19,22 +19,22 @@ import com.opensymphony.xwork2.ActionSupport;
  * 
  */
 public class RicercaImmobiliAction extends ActionSupport {
-	/** provincia inserita nel form dall'utente o dal fruitore **/
+	/** Provincia inserita nel form dall'utente o dal fruitore */
 	private String provincia;
-	/** città inserita nel form dall'utente o dal fruitore **/
+	/** Città inserita nel form dall'utente o dal fruitore */
 	private String citta;
-	/** zona inserita nel form dall'utente o dal fruitore **/
+	/** Zona inserita nel form dall'utente o dal fruitore */
 	private String zona;
-	/** fascia prezzo inserita nel form dall'utente o dal fruitore **/
+	/** Fascia prezzo inserita nel form dall'utente o dal fruitore */
 	private int fasciaPrezzo;
-	/** fascia MQ inserita nel form dall'utente o dal fruitore **/
+	/** Fascia MQ inserita nel form dall'utente o dal fruitore */
 	private int fasciaMQ;
-	/** tipologia inserita nel form dall'utente o dal fruitore **/
+	/** Tipologia inserita nel form dall'utente o dal fruitore */
 	private String tipologia;
-	/** sub tipologia inserita nel form dall'utente o dal fruitore **/
+	/** Sub tipologia inserita nel form dall'utente o dal fruitore */
 	private String subTipologia;
 	/**
-	 * lista di immobili che matchano i campi riempiti dall'utente o dal
+	 * Lista di immobili che matchano i campi riempiti dall'utente o dal
 	 * fruitore
 	 **/
 	List<Immobile> immobili;
@@ -42,6 +42,12 @@ public class RicercaImmobiliAction extends ActionSupport {
 	/**
 	 * Istanzia la lista degli immobili che matchano con i campi inseriti nel
 	 * form.
+	 */
+	/*
+	 * (non-Javadoc) Fa un check sui campi: se non sono vuoti allora li
+	 * inserisce nella mappa.
+	 * 
+	 * @see com.opensymphony.xwork2.ActionSupport#execute()
 	 */
 	@Override
 	public String execute() {

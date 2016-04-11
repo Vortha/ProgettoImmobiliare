@@ -11,15 +11,15 @@ import java.sql.SQLException;
  * 
  */
 public class DBLocator {
-	/** url del database **/
+	/** Url del database */
 	private static final String url = "jdbc:mysql://localhost/estatedb";
-	/** username dell'utente per la connessione al database **/
+	/** Username dell'utente per la connessione al database */
 	private static final String username = "estatedb";
-	/** password dell'utente per la connessione al database **/
+	/** Password dell'utente per la connessione al database */
 	private static final String password = "estatedb";
-	/** indirizzo del driver utilizzato per la connessione JDBC **/
+	/** Indirizzo del driver utilizzato per la connessione JDBC */
 	private static final String driver = "com.mysql.jdbc.Driver";
-	/** driver Singleton **/
+	/** Driver Singleton */
 	private static DBLocator me = null;
 
 	/**
@@ -41,9 +41,10 @@ public class DBLocator {
 	}
 
 	/**
-	 * Restituisce il driver Singleton. Se non istanziato, lo istanzia prima.
+	 * Restituisce il driver Singleton. Se non istanziato, lo istanzia e poi lo
+	 * restituisce.
 	 * 
-	 * @return DBLocator - restituisce il Singleton
+	 * @return DBLocator - Singleton
 	 * @throws ClassNotFoundException
 	 */
 	public synchronized static DBLocator getDBLocator()

@@ -5,7 +5,6 @@ import java.util.List;
 
 import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.Agente;
 import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.Cliente;
-import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.Utente;
 
 /**
  * Interfaccia della classe DAO utilizzata per accedere ai dati relativi al
@@ -16,65 +15,65 @@ import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.
  */
 public interface AgenteDAOI {
 	/**
-	 * Registra un utente all'applicazione e lo assegna direttamente all'agente
-	 * che la effettua.
+	 * Dato l'agente come parametro, lo registra all'interno dell'applicazione.
 	 * 
 	 * @param agente
-	 *            - l'agente che effettua la registrazione dell'utente
-	 * @param utente
-	 *            - l'utente da dover registrare all'applicazione
-	 * @return true se ha registrato l'utente, false altrimenti
+	 *            - l'agente che si vuole registrare all'applicazione
+	 * @return true se l'agente è stato registrato, false altrimenti
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public boolean registraCliente(Agente agente, Utente utente)
+	public boolean creaAgente(Agente agente) throws ClassNotFoundException,
+			SQLException;
+
+	/**
+	 * Restituisce la lista degli agenti presenti all'interno dell'applicazione.
+	 * 
+	 * @return List&lt;Agente&gt; - la lista degli agenti
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public List<Agente> visualizzaAgenti() throws ClassNotFoundException,
+			SQLException;
+
+	/**
+	 * Modifica l'agente identificato dal campo email, dato come parametro, con
+	 * i campi del parametro agente.
+	 * 
+	 * @param email
+	 *            - l'email dell'agente del quale si vogliono modificare i dati
+	 * @param agente
+	 *            - l'oggetto agente istanziato con i nuovi dati
+	 * @return true se l'agente è stato modificato, false altrimenti
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public boolean modificaAgente(String email, Agente agente)
 			throws ClassNotFoundException, SQLException;
 
 	/**
-	 * Restituisce la lista dei clienti assegnati all'agente passato come
-	 * parametro del metodo.<br>
-	 * Vengono restituiti anche i clienti che sono in fase di eliminazione
-	 * account, ovvero che hanno effettuato l'eliminazione ma è ancora possibile
-	 * effettuare la riattivazione dell'account.
+	 * Data l'email come parametro, elimina l'agente associato a quell'email.
+	 * 
+	 * @param email
+	 *            - l'email dell'agente da eliminare
+	 * @return true se ha eliminato l'agente, false altrimenti
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public boolean eliminaAgente(String email) throws ClassNotFoundException,
+			SQLException;
+
+	/**
+	 * Assegna l'agente al cliente dati come parametri.
 	 * 
 	 * @param agente
-	 *            - l'agente del quale si vogliono visualizzare i clienti
-	 * @return List&lt;Cliente&gt; - la lista dei clienti assegnati all'agente
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 */
-	public List<Cliente> visualizzaClienti(Agente agente)
-			throws ClassNotFoundException, SQLException;
-
-	/**
-	 * Modifica le informazioni (nome, cognome, telefono, email) del cliente.<br>
-	 * Il parametro <i>vecchiaEmail</i> è l'email corrente del cliente al quale
-	 * si vogliono apportare le modifiche, mentre il parametro <i>cliente</i> è
-	 * un oggetto Cliente istanziato con i nuovi valori che si vogliono
-	 * assegnare al cliente.
-	 * 
-	 * @param vecchiaEmail
-	 *            - l'email corrente del cliente al quale si vogliono apportare
-	 *            modifiche
+	 *            - l'agente che si vuole assegnare al cliente
 	 * @param cliente
-	 *            - il cliente con i nuovi campi istanziati
-	 * @return true se il cliente è stato modificato, false altrimenti
+	 *            - il cliente al quale assegnare l'agente
+	 * @return true se ha assegnato il cliente all'agente, false altrimenti
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public boolean modificaCliente(String vecchiaEmail, Cliente cliente)
-			throws ClassNotFoundException, SQLException;
-
-	/**
-	 * Elimina definitivamente il cliente (dato come parametro)
-	 * dall'applicazione.
-	 * 
-	 * @param cliente
-	 *            - il cliente da voler eliminare
-	 * @return true se il cliente è stato eliminato, false altrimenti
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 */
-	public boolean eliminaCliente(Cliente cliente)
+	public boolean assegnaCliente(Agente agente, Cliente cliente)
 			throws ClassNotFoundException, SQLException;
 }

@@ -9,12 +9,14 @@ import java.sql.Date;
  * 
  */
 public class Cliente extends Fruitore {
+	/** Rappresenta l'agente assegnato al cliente */
+	private String agenteAssegnato;
 	/**
 	 * Booleano che rappresenta se un Cliente è in stato di eliminazione
 	 * dall'applicazione
-	 **/
+	 */
 	private boolean eliminato;
-	/** Rappresenta la data di eliminazione **/
+	/** Rappresenta la data di eliminazione */
 	private Date dataEliminazione;
 
 	public Cliente(String nome, String cognome, String telefono, String email,
@@ -29,6 +31,22 @@ public class Cliente extends Fruitore {
 		this.dataEliminazione = dataEliminazione;
 	}
 
+	public Cliente(String nome, String cognome, String telefono, String email,
+			String password, String agenteAssegnato, boolean eliminato, Date dataEliminazione) {
+		super(nome, cognome, telefono, email, password);
+		this.agenteAssegnato = agenteAssegnato;
+		this.eliminato = eliminato;
+		this.dataEliminazione = dataEliminazione;
+	}
+	
+	public String getAgenteAssegnato() {
+		return agenteAssegnato;
+	}
+	
+	public void setAgenteAssegnato(String agenteAssegnato) {
+		this.agenteAssegnato = agenteAssegnato;
+	}
+	
 	public boolean isEliminato() {
 		return eliminato;
 	}

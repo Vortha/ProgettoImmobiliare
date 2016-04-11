@@ -28,6 +28,15 @@ public interface ImmobileDAOI {
 			throws ClassNotFoundException, SQLException;
 
 	/**
+	 * Restituisce l'ultimo identificativo associato ad un immobile.
+	 * 
+	 * @return int - l'ultimo identificativo associato ad un immobile
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public int ultimoId() throws ClassNotFoundException, SQLException;
+
+	/**
 	 * Dato l'id immobile come parametro e un oggetto di tipo immobile, modifica
 	 * nell'applicazione l'immobile corrispondente all'id immobile con i
 	 * parametri dell'immobile dato in input.
@@ -45,7 +54,7 @@ public interface ImmobileDAOI {
 			throws ClassNotFoundException, SQLException;
 
 	/**
-	 * dato l'id immobile dell'immobile da eliminare lo elimina
+	 * Dato l'id immobile dell'immobile da eliminare lo elimina
 	 * dall'applicazione
 	 * 
 	 * @param id_immobile
@@ -84,6 +93,19 @@ public interface ImmobileDAOI {
 			SQLException;
 
 	/**
+	 * Restituisce l'immobile associato all'identificativo passato come
+	 * parametro.
+	 * 
+	 * @param idImmobile
+	 *            - l'identificativo dell'immobile
+	 * @return Immobile - l'immobile associato all'identificativo
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public Immobile visualizzaImmobile(int idImmobile)
+			throws ClassNotFoundException, SQLException;
+
+	/**
 	 * Dato il cliente come parametro, seleziona tutti gli immobili che matchano
 	 * con le schede di ricerca di questo cliente e li restituisce.
 	 * 
@@ -96,5 +118,53 @@ public interface ImmobileDAOI {
 	 * @throws SQLException
 	 */
 	public List<Immobile> visualizzaMatch(Cliente cliente)
+			throws ClassNotFoundException, SQLException;
+
+	/**
+	 * Aggiunge l'immobile, dato come parametro, agli immobili preferiti del
+	 * Cliente.
+	 * 
+	 * @param cliente
+	 *            - il cliente al quale si deve aggiungere l'immobile ai
+	 *            preferiti
+	 * @param immobile
+	 *            - l'immobile da aggiungere ai preferiti
+	 * @return true se è stato aggiunto l'immobile ai preferiti, false
+	 *         altrimenti
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
+	public boolean aggiungiPreferiti(Cliente cliente, Immobile immobile)
+			throws ClassNotFoundException, SQLException;
+
+	/**
+	 * Restituisce la lista di immobili preferiti dal cliente dato come
+	 * parametro.
+	 * 
+	 * @param cliente
+	 *            - il cliente del quale si desidera vedere gli immobili
+	 *            preferiti
+	 * @return List&lt;Immobile&gt; - la lista di immobili preferiti
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public List<Immobile> visualizzaPreferiti(Cliente cliente)
+			throws ClassNotFoundException, SQLException;
+
+	/**
+	 * Elimina l'immobile, dato come parametro, dagli immobili preferiti del
+	 * Cliente.
+	 * 
+	 * @param cliente
+	 *            - il cliente al quale si deve rimuovere l'immobile dai
+	 *            preferiti
+	 * @param immobile
+	 *            - l'immobile da eliminare dai preferiti
+	 * @return true se sono stati modificati gli immobili preferiti, false
+	 *         altrimenti
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
+	public boolean modificaPreferiti(Cliente cliente, Immobile immobile)
 			throws ClassNotFoundException, SQLException;
 }

@@ -2,12 +2,16 @@ package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.Agente;
 import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.Cliente;
+import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.Utente;
 import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.fruitore.DAO.FruitoreDAO;
-import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.elemento.Immobile;
 
 /**
  * Classe DAO che implementa le funzionalità del Cliente. Implementa
@@ -18,54 +22,81 @@ import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.element
  */
 public class ClienteDAO extends FruitoreDAO implements ClienteDAOI {
 
+	/*
+	 * (non-Javadoc) Il cliente viene inserito nella tabella fruitore settando
+	 * il campo cliente a 1. I campi corrispondenti agli altri profili vengono
+	 * settati a 0.
+	 * 
+	 * @see
+	 * it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore
+	 * .cliente.DAO.ClienteDAOI#registraCliente(it.uniroma2.IS.
+	 * TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.Agente,
+	 * it.uniroma2
+	 * .IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.Utente)
+	 */
 	@Override
-	public boolean aggiungiPreferiti(Cliente cliente, Immobile immobile)
+	public boolean registraCliente(Agente agente, Utente utente)
 			throws ClassNotFoundException, SQLException {
-		String query = "insert into preferiti values('" + cliente.getEmail()
-				+ "', " + immobile.getIdImmobile() + ")";
+		String query = "insert into fruitore values('" + utente.getEmail()
+				+ "', '" + utente.getNome() + "', '" + utente.getTelefono()
+				+ "', '" + utente.getCognome() + "', '" + utente.getPassword()
+				+ "', 1, 0, 0, 0, '" + agente.getEmail() + "', 0, NULL)";
 
 		return update(query);
 	}
 
-	@Override
-	public List<Immobile> visualizzaPreferiti(Cliente cliente)
-			throws ClassNotFoundException, SQLException {
-		List<Immobile> preferiti = new ArrayList<Immobile>();
-
-		String query = "select * from preferiti where email = '"
-				+ cliente.getEmail() + "'";
-
+	public List<Cliente> visualizzaClienti() throws ClassNotFoundException,
+			SQLException {
+		String query = "select * from fruitore where cliente = 1";
+		List<Cliente> clienti = new ArrayList<Cliente>();
 		ResultSet resultSet = select(query);
-		ResultSet resultSet2;
 		while (resultSet.next()) {
-			query = "select * from immobile where id_immobile = "
-					+ resultSet.getInt("id_immobile");
-			resultSet2 = select(query);
-
-			resultSet2.next();
-			preferiti.add(new Immobile(resultSet2.getInt(1), resultSet2
-					.getString(2), resultSet2.getString(3), resultSet2
-					.getString(4), resultSet2.getInt(5), resultSet2.getInt(6),
-					resultSet2.getString(7), resultSet2.getString(8),
-					resultSet2.getDouble(9), resultSet2.getInt(10), resultSet2
-							.getString(11), resultSet2.getString(12)));
+			clienti.add(new Cliente(resultSet.getString("nome"), resultSet
+					.getString("cognome"), resultSet.getString("telefono"),
+					resultSet.getString("email"), resultSet
+							.getString("password"), resultSet
+							.getString("agente_assegnato"), resultSet
+							.getBoolean("eliminato"), resultSet
+							.getDate("data_eliminazione")));
 		}
 
-		return preferiti;
+		return clienti;
 	}
 
 	@Override
-	public boolean modificaPreferiti(Cliente cliente, Immobile immobile)
+	public List<Cliente> visualizzaClienti(Agente agente)
 			throws ClassNotFoundException, SQLException {
-		String query = "delete from preferiti where email = '"
-				+ cliente.getEmail() + "' and id_immobile = "
-				+ immobile.getIdImmobile();
+		String query = "select * from fruitore where agente_assegnato = '"
+				+ agente.getEmail() + "'";
+		List<Cliente> clientiAssegnati = new ArrayList<Cliente>();
+		ResultSet resultSet = select(query);
+		while (resultSet.next()) {
+			clientiAssegnati.add(new Cliente(resultSet.getString("nome"),
+					resultSet.getString("cognome"), resultSet
+							.getString("telefono"), resultSet
+							.getString("email"), resultSet
+							.getString("password"), resultSet
+							.getBoolean("eliminato"), resultSet
+							.getDate("data_eliminazione")));
+		}
+
+		return clientiAssegnati;
+	}
+
+	@Override
+	public boolean modificaCliente(String vecchiaEmail, Cliente cliente)
+			throws ClassNotFoundException, SQLException {
+		String query = "update fruitore set email = '" + cliente.getEmail()
+				+ "', nome = '" + cliente.getNome() + "', telefono = '"
+				+ cliente.getTelefono() + "', cognome = '"
+				+ cliente.getCognome() + "' where email = '" + vecchiaEmail
+				+ "'";
 
 		return update(query);
 	}
 
 	@Override
-	public boolean eliminaAccount(Cliente cliente)
+	public boolean eliminaCliente(Cliente cliente)
 			throws ClassNotFoundException, SQLException {
 		String query = "delete from fruitore where email = '"
 				+ cliente.getEmail() + "'";
@@ -73,24 +104,25 @@ public class ClienteDAO extends FruitoreDAO implements ClienteDAOI {
 		return update(query);
 	}
 
-	public static void main(String[] args) throws ClassNotFoundException,
-			SQLException {
-		ClienteDAO dao = new ClienteDAO();
-		Cliente cliente = new Cliente("Lory", "Vigliano", "3358969453",
-				"pomp@pomp.it", "ciacia");
-		Immobile immobile = new Immobile(7, "", "", "", 0, 0, "", "", 0, 0, "",
-				"");
-
-		 System.out.println("Aggiungi preferiti: "
-		 + dao.aggiungiPreferiti(cliente, immobile));
-
-		System.out.println("Visualizza preferiti: ");
-		System.out.println(dao.visualizzaPreferiti(cliente));
-
-		 System.out.println("Modifica preferiti: "
-		 + dao.modificaPreferiti(cliente, immobile));
-		
-		 System.out.println("Elimina account: " +
-		 dao.eliminaAccount(cliente));
+	/*
+	 * (non-Javadoc) Setta a 1 il campo eliminato del cliente e la data di
+	 * eliminazione a quella corrente.
+	 * 
+	 * @see
+	 * it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore
+	 * .cliente
+	 * .DAO.ClienteDAOI#eliminaAccount(it.uniroma2.IS.TeamPennacchiPiacentiniPompili
+	 * .ProgettoImmobiliare.attore.Cliente)
+	 */
+	@Override
+	public boolean eliminaAccount(Cliente cliente)
+			throws ClassNotFoundException, SQLException {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		Date date = new Date();
+		String query = "update fruitore set eliminato = 1 and data_eliminazione = '"
+				+ dateFormat.format(date)
+				+ "'  where email = '"
+				+ cliente.getEmail() + "'";
+		return update(query);
 	}
 }

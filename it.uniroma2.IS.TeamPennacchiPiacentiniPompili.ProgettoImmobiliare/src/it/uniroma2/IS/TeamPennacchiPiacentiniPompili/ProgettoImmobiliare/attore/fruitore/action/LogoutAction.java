@@ -16,7 +16,7 @@ import com.opensymphony.xwork2.ActionSupport;
  *
  */
 public class LogoutAction extends ActionSupport implements SessionAware {
-	/** mappa della sessione che tiene traccia del login */
+	/** Mappa della sessione che tiene traccia del login */
 	private SessionMap<String, Object> sessionMap;
 
 	/**

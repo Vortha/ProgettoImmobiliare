@@ -22,6 +22,14 @@ import java.util.Map.Entry;
  */
 public class FruitoreDAO extends DBAccessManager implements FruitoreDAOI {
 
+	/*
+	 * (non-Javadoc) Verifica quale è il campo associato al profilo (Cliente,
+	 * Agente, Amministratore) posto a 1 e istanzia un fruitore di quel tipo.
+	 * 
+	 * @see
+	 * it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore
+	 * .fruitore.DAO.FruitoreDAOI#login(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public Fruitore login(String email, String password)
 			throws ClassNotFoundException, SQLException {
@@ -52,6 +60,15 @@ public class FruitoreDAO extends DBAccessManager implements FruitoreDAOI {
 		return false;
 	}
 
+	/*
+	 * (non-Javadoc) Aggiunge alla query, in modo dinamico, i campi da
+	 * modificare con i valori associati, prendendoli dalla mappa.
+	 * 
+	 * @see
+	 * it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore
+	 * .fruitore.DAO.FruitoreDAOI#modificaDatiPersonali(java.lang.String,
+	 * java.util.Map)
+	 */
 	@Override
 	public boolean modificaDatiPersonali(String email,
 			Map<DatiPersonaliEnum, String> datiPersonali)
@@ -74,22 +91,5 @@ public class FruitoreDAO extends DBAccessManager implements FruitoreDAOI {
 		}
 
 		return false;
-	}
-
-	public static void main(String[] args) throws ClassNotFoundException,
-			SQLException {
-		FruitoreDAO dao = new FruitoreDAO();
-		System.out.println("Login: " + dao.login("pomp@pomp.it", "pomp"));
-
-		Map<DatiPersonaliEnum, String> datiPersonali = new HashMap<>();
-		datiPersonali.put(DatiPersonaliEnum.TELEFONO, "3358969453");
-		datiPersonali.put(DatiPersonaliEnum.PASSWORD, "superalmone");
-		datiPersonali.put(DatiPersonaliEnum.COGNOME, "Vigliano");
-		datiPersonali.put(DatiPersonaliEnum.EMAIL, "vigliano@uniroma2.it");
-		datiPersonali.put(DatiPersonaliEnum.NOME, "Lory");
-		datiPersonali.put(DatiPersonaliEnum.PASSWORD, "ciacia");
-		System.out.println("Modifica dati personali: "
-				+ dao.modificaDatiPersonali("vigliano@uniroma2.it",
-						datiPersonali));
 	}
 }
