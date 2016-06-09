@@ -7,35 +7,51 @@ package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.elemen
  * 
  */
 public class Immobile {
-	/** id dell'immobile **/
+	/** Identificativo dell'immobile */
 	private int idImmobile;
-	/** Provincia di appartenenza dell'immobile **/
+	/** Provincia di appartenenza dell'immobile */
 	private String provincia;
-	/** Città di appartenenza dell'immobile **/
+	/** Città di appartenenza dell'immobile */
 	private String citta;
-	/** Zona di appartenenza dell'immobile **/
+	/** Zona di appartenenza dell'immobile */
 	private String zona;
-	/** Numero di camere presenti all'interno dell'immobile **/
+	/** Numero di camere presenti all'interno dell'immobile */
 	private int camere;
-	/** Numero di bagni presenti all'interno dell'immobile **/
+	/** Numero di bagni presenti all'interno dell'immobile */
 	private int bagni;
-	/** Tipologia dell'immobile **/
+	/** Tipologia dell'immobile */
 	private String tipologia;
-	/** Sub tipologia dell'immobile **/
+	/** Sub tipologia dell'immobile */
 	private String subTipologia;
-	/** Prezzo di vendita dell'immobile **/
+	/** Prezzo di vendita dell'immobile */
 	private double prezzo;
-	/** Numero di mq dell'immobile **/
+	/** Numero di mq dell'immobile */
 	private int mq;
-	/** Descrizione dell'immobile **/
+	/** Descrizione dell'immobile */
 	private String descrizione;
-	/** Path della cartella contenente le immagini dell'immobile **/
-	private String fotoPath;
+	/** Path della cartella contenente le immagini dell'immobile */
+	private String foto;
+
+	public Immobile(String provincia, String citta, String zona, int camere,
+			int bagni, String tipologia, String subTipologia, double prezzo,
+			int mq, String descrizione, String foto) {
+		this.provincia = provincia;
+		this.citta = citta;
+		this.zona = zona;
+		this.camere = camere;
+		this.bagni = bagni;
+		this.tipologia = tipologia;
+		this.subTipologia = subTipologia;
+		this.prezzo = prezzo;
+		this.mq = mq;
+		this.descrizione = descrizione;
+		this.foto = foto;
+	}
 
 	public Immobile(int idImmobile, String provincia, String citta,
 			String zona, int camere, int bagni, String tipologia,
 			String subTipologia, double prezzo, int mq, String descrizione,
-			String fotoPath) {
+			String foto) {
 		this.idImmobile = idImmobile;
 		this.provincia = provincia;
 		this.citta = citta;
@@ -47,7 +63,15 @@ public class Immobile {
 		this.prezzo = prezzo;
 		this.mq = mq;
 		this.descrizione = descrizione;
-		this.fotoPath = fotoPath;
+		this.foto = foto;
+	}
+
+	public int getIdImmobile() {
+		return idImmobile;
+	}
+
+	public void setIdImmobile(int idImmobile) {
+		this.idImmobile = idImmobile;
 	}
 
 	public String getProvincia() {
@@ -130,12 +154,12 @@ public class Immobile {
 		this.descrizione = descrizione;
 	}
 
-	public String getfotoPath() {
-		return fotoPath;
+	public String getFoto() {
+		return foto;
 	}
 
-	public void setfotoPath(String fotoPath) {
-		this.fotoPath = fotoPath;
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	@Override
@@ -145,7 +169,7 @@ public class Immobile {
 				+ ", camere=" + camere + ", bagni=" + bagni + ", tipologia="
 				+ tipologia + ", subTipologia=" + subTipologia + ", prezzo="
 				+ prezzo + ", mq=" + mq + ", descrizione=" + descrizione
-				+ ", fotoPath=" + fotoPath + "]";
+				+ ", foto=" + foto + "]";
 	}
 
 }

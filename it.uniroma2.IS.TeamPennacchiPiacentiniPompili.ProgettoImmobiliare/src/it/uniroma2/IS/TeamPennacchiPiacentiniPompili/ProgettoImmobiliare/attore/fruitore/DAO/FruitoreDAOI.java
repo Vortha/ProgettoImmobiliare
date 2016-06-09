@@ -1,5 +1,6 @@
 package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.fruitore.DAO;
 
+import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.Fruitore;
 import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.enumClass.DatiPersonaliEnum;
 
 import java.sql.SQLException;
@@ -15,16 +16,18 @@ import java.util.Map;
 public interface FruitoreDAOI {
 	/**
 	 * Effettua il login all'applicazione dati email e password del fruitore.
+	 * Restituisce un oggetto corrispondente al tipo di fruitore che ha
+	 * effettuato il login.
 	 * 
 	 * @param email
 	 *            - l'email del fruitore
 	 * @param password
 	 *            - la password del fruitore
-	 * @return true se il login ha avuto successo, false altrimenti
+	 * @return il tipo di fruitore che ha effettuato il login
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public boolean login(String email, String password)
+	public Fruitore login(String email, String password)
 			throws ClassNotFoundException, SQLException;
 
 	/** Effettua il logout dall'applicazione. **/
@@ -44,7 +47,7 @@ public interface FruitoreDAOI {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	boolean modificaDatiPersonali(String email,
+	public boolean modificaDatiPersonali(String email,
 			Map<DatiPersonaliEnum, String> datiPersonali)
 			throws ClassNotFoundException, SQLException;
 }

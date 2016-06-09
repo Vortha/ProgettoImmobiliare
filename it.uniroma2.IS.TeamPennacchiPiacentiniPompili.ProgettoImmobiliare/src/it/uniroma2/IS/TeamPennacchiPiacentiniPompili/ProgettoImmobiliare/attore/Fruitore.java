@@ -8,15 +8,15 @@ package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore
  * 
  */
 public class Fruitore {
-	/** Nome del fruitore **/
+	/** Nome del fruitore */
 	private String nome;
-	/** Cognome del fruitore **/
+	/** Cognome del fruitore */
 	private String cognome;
-	/** Numero di telefono del fruitore **/
+	/** Numero di telefono del fruitore */
 	private String telefono;
-	/** Email del fruitore **/
+	/** Email del fruitore */
 	private String email;
-	/** Password del fruitore **/
+	/** Password del fruitore */
 	private String password;
 
 	public Fruitore(String nome, String cognome, String telefono, String email,
@@ -66,6 +66,13 @@ public class Fruitore {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Fruitore [nome=" + nome + ", cognome=" + cognome
+				+ ", telefono=" + telefono + ", email=" + email + ", password="
+				+ password;
 	}
 
 }

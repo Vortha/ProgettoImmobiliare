@@ -17,25 +17,32 @@ import java.util.Map.Entry;
  * 
  */
 public class SchedaDiRicerca {
-	/** identificativo della scheda di ricerca **/
+	/** Identificativo della scheda di ricerca */
 	private int idScheda;
-	/** Provincia di appartenenza dell'immobile cercato **/
+	/** Provincia di appartenenza dell'immobile cercato */
 	private String provincia;
-	/** Città di appartenenza dell'immobile cercato **/
+	/** Città di appartenenza dell'immobile cercato */
 	private String citta;
-	/** Zona di appartenenza dell'immobile cercato **/
+	/** Zona di appartenenza dell'immobile cercato */
 	private String zona;
-	/** Fascia di prezzo dell'immobile cercato **/
+	/** Fascia di prezzo dell'immobile cercato */
 	private int fasciaPrezzo;
-	/** Fascia di mq dell'immobile cercato **/
+	/** Fascia di mq dell'immobile cercato */
 	private int fasciaMQ;
-	/** Tipologia dell'immobile cercato **/
+	/** Tipologia dell'immobile cercato */
 	private String tipologia;
-	/** Sub tipologia dell'immobile cercato **/
+	/** Sub tipologia dell'immobile cercato */
 	private String subTipologia;
-	/** Mappa contenente gli attributi di una scheda di ricerca **/
+	/** Mappa contenente gli attributi di una scheda di ricerca */
 	private Map<CampoSchedaDiRicercaEnum, Object> mappaFiltro;
 
+	/**
+	 * Istanzia i campi presenti nella mappa data come parametro.<br>
+	 * mappaFiltro è una mappa &lt;CampoSchedaDiRicercaEnum, Object&gt;
+	 * 
+	 * @param mappaFiltro
+	 *            - mappa che contiene i campi da inizializzare
+	 */
 	public SchedaDiRicerca(Map<CampoSchedaDiRicercaEnum, Object> mappaFiltro) {
 		for (Entry<CampoSchedaDiRicercaEnum, Object> entry : mappaFiltro
 				.entrySet()) {
@@ -166,9 +173,10 @@ public class SchedaDiRicerca {
 
 	@Override
 	public String toString() {
-		return "SchedaDiRicerca [idScheda=" + idScheda + ", provincia=" + provincia + ", citta=" + citta
-				+ ", zona=" + zona + ", fasciaPrezzo=" + fasciaPrezzo
-				+ ", fasciaMQ=" + fasciaMQ + ", tipologia=" + tipologia
-				+ ", subTipologia=" + subTipologia + "]";
+		return "SchedaDiRicerca [idScheda=" + idScheda + ", provincia="
+				+ provincia + ", citta=" + citta + ", zona=" + zona
+				+ ", fasciaPrezzo=" + fasciaPrezzo + ", fasciaMQ=" + fasciaMQ
+				+ ", tipologia=" + tipologia + ", subTipologia=" + subTipologia
+				+ "]";
 	}
 }
