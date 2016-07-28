@@ -12,18 +12,19 @@ import java.sql.SQLException;
  */
 public class DBLocator {
 	/** Url del database */
-	private static final String url = "jdbc:mysql://localhost/estatedb";
+	private static final String url = "jdbc:mysql://127.3.250.2:3306/progettoimmobiliare";
 	/** Username dell'utente per la connessione al database */
-	private static final String username = "estatedb";
+	private static final String username = "adminM6mEWly";
 	/** Password dell'utente per la connessione al database */
-	private static final String password = "estatedb";
+	private static final String password = "LsAhgyGf--n1";
 	/** Indirizzo del driver utilizzato per la connessione JDBC */
 	private static final String driver = "com.mysql.jdbc.Driver";
 	/** Driver Singleton */
 	private static DBLocator me = null;
 
 	/**
-	 * Istanzia il driver Singleton.
+	 * Istanzia il DBLocator Singleton prendendo i parametri dal file
+	 * config.properties.
 	 * 
 	 * @throws ClassNotFoundException
 	 */
