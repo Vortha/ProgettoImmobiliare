@@ -19,6 +19,15 @@ public class DBLocator {
 	private static final String password = "LsAhgyGf--n1";
 	/** Indirizzo del driver utilizzato per la connessione JDBC */
 	private static final String driver = "com.mysql.jdbc.Driver";
+	
+//	/** Url del database */
+//	private static final String url = "jdbc:mysql://localhost/estatedb";
+//	/** Username dell'utente per la connessione al database */
+//	private static final String username = "estatedb";
+//	/** Password dell'utente per la connessione al database */
+//	private static final String password = "estatedb";
+//	/** Indirizzo del driver utilizzato per la connessione JDBC */
+//	private static final String driver = "com.mysql.jdbc.Driver";
 	/** Driver Singleton */
 	private static DBLocator me = null;
 
