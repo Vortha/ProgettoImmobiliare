@@ -1,6 +1,7 @@
 package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.fruitore.action;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.struts2.dispatcher.SessionMap;
@@ -29,6 +30,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private String password;
 	/** Mappa della sessione che tiene traccia del login */
 	private SessionMap<String, Object> sessionMap;
+	/** Risposta dalla connessione */
+	private Map<String, String> response;
 
 	/**
 	 * Effettua il login di un fruitore all'interno dell'applicazione e
@@ -43,6 +46,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	@Override
 	public String execute() {
 		FruitoreDAO dao = new FruitoreDAO();
+		response = new HashMap<String, String>();
+		
+		response.put("result", ERROR);
 		try {
 			Fruitore fruitore = dao.login(email, password);
 			if (fruitore == null) {
@@ -51,6 +57,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			}
 			if (fruitore.getClass() == Cliente.class) {
 				sessionMap.put("clienteLoggato", fruitore);
+				response.put("result", SUCCESS);
 				return SUCCESS;
 			} else if (fruitore.getClass() == Agente.class) {
 				sessionMap.put("agenteLoggato", fruitore);
@@ -90,5 +97,13 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	@Override
 	public void setSession(Map<String, Object> map) {
 		sessionMap = (SessionMap) map;
+	}
+	
+	public Map<String, String> getResponse() {
+		return response;
+	}
+	
+	public void setResponse(Map<String, String> response) {
+		this.response = response;
 	}
 }
