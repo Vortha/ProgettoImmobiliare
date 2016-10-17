@@ -1,7 +1,9 @@
 package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.fruitore.action;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.elemento.Immobile;
 import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.elemento.immobile.DAO.ImmobileDAO;
@@ -23,6 +25,7 @@ public class VisualizzaImmobiliAction extends ActionSupport {
 	/** Istanzia gli immobili presenti all'interno dell'applicazione. **/
 	@Override
 	public String execute() {
+		immobili = new ArrayList<>();
 		ImmobileDAO dao = new ImmobileDAO();
 		try {
 			immobili = dao.visualizzaImmobili();

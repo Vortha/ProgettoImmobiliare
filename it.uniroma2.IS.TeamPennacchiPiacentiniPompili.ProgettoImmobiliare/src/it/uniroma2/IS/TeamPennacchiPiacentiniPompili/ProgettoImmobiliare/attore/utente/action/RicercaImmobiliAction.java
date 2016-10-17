@@ -1,6 +1,7 @@
 package it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.utente.action;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +52,7 @@ public class RicercaImmobiliAction extends ActionSupport {
 	 */
 	@Override
 	public String execute() {
+		immobili = new ArrayList<>();
 		Map<CampoSchedaDiRicercaEnum, Object> mappaFiltro = new HashMap<CampoSchedaDiRicercaEnum, Object>();
 		if (!provincia.equals("")) {
 			mappaFiltro.put(CampoSchedaDiRicercaEnum.PROVINCIA, provincia);

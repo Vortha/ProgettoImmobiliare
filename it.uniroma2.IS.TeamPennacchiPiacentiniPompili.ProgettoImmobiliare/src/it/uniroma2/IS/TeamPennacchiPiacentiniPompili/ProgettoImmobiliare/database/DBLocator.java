@@ -11,7 +11,7 @@ import java.sql.SQLException;
  * 
  */
 public class DBLocator {
-	/** Url del database */
+//	/** Url del database */
 //	private static final String url = "jdbc:mysql://127.3.250.2:3306/progettoimmobiliare";
 //	/** Username dell'utente per la connessione al database */
 //	private static final String username = "adminM6mEWly";

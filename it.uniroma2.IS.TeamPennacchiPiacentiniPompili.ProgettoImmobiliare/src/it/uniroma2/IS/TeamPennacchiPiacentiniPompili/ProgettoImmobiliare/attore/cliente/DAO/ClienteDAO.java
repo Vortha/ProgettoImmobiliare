@@ -125,4 +125,19 @@ public class ClienteDAO extends FruitoreDAO implements ClienteDAOI {
 				+ cliente.getEmail() + "'";
 		return update(query);
 	}
+
+	@Override
+	public boolean aggiungiPreferiti(String email, int idImmobile)
+			throws ClassNotFoundException, SQLException {
+		String query = "insert into preferiti values('" + email + "', " + idImmobile + ")";
+		return update(query);
+	}
+
+	@Override
+	public boolean rimuoviPreferiti(String email, int idImmobile)
+			throws ClassNotFoundException, SQLException {
+		String query = "delete from preferiti where email = '" + email
+				+ "' and id_immobile = " + idImmobile;
+		return update(query);
+	}
 }

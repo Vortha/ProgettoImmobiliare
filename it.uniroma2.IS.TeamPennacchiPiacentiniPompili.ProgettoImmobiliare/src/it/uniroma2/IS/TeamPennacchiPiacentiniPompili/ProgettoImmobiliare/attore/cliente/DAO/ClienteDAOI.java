@@ -105,4 +105,41 @@ public interface ClienteDAOI {
 	 */
 	public boolean eliminaAccount(Cliente cliente)
 			throws ClassNotFoundException, SQLException;
+
+	/**
+	 * Aggiunge l'immobile identificato dal parametro idImmobile tra la lista
+	 * degli immobili preferiti del cliente identificato dal parametro email.
+	 * 
+	 * @param email
+	 *            - email del cliente al quale si deve aggiungere l'immobile tra
+	 *            i preferiti
+	 * @param idImmobile
+	 *            - identificativo dell'immobile da aggiungere tra gli immobili
+	 *            preferiti del cliente
+	 * @return true se l'immobile è stato aggiunto tra i preferiti, false
+	 *         altrimenti
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public boolean aggiungiPreferiti(String email, int idImmobile)
+			throws ClassNotFoundException, SQLException;
+
+	/**
+	 * Rimuove l'immobile identificato dal parametro idImmobile dalla lista
+	 * degli immobili preferiti del cliente identificato dal parametro email.
+	 * 
+	 * @param email
+	 *            - email del cliente al quale si deve rimuovere l'immobile da i
+	 *            preferiti
+	 * @param idImmobile
+	 *            - identificativo dell'immobile da rimuovere dagli immobili
+	 *            preferiti del cliente
+	 * @return true se l'immobile è stato rimosso dai preferiti, false
+	 *         altrimenti
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public boolean rimuoviPreferiti(String email, int idImmobile)
+			throws ClassNotFoundException, SQLException;
+
 }

@@ -16,9 +16,9 @@ import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * Classe action che implementa la funzionalità del login di un generico fruitore.
- * Quindi quest'action viene richiamata dal login del cliente, agente e
- * amministratore.
+ * Classe action che implementa la funzionalità del login di un generico
+ * fruitore. Quindi quest'action viene richiamata dal login del cliente, agente
+ * e amministratore.
  * 
  * @author Team Pennacchi Piacentini Pompili
  * 
@@ -30,8 +30,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private String password;
 	/** Mappa della sessione che tiene traccia del login */
 	private SessionMap<String, Object> sessionMap;
-	/** Risposta dalla connessione */
-	private Map<String, String> response;
+	/** Risposta della connessione da mobile */
+	private Map<String, Object> risposta;
 
 	/**
 	 * Effettua il login di un fruitore all'interno dell'applicazione e
@@ -46,9 +46,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	@Override
 	public String execute() {
 		FruitoreDAO dao = new FruitoreDAO();
-		response = new HashMap<String, String>();
+		risposta = new HashMap<>();
 		
-		response.put("result", ERROR);
+		risposta.put("connessione", false);
+
 		try {
 			Fruitore fruitore = dao.login(email, password);
 			if (fruitore == null) {
@@ -57,7 +58,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			}
 			if (fruitore.getClass() == Cliente.class) {
 				sessionMap.put("clienteLoggato", fruitore);
-				response.put("result", SUCCESS);
+				risposta.put("utente", fruitore);
+				risposta.put("connessione", true);
 				return SUCCESS;
 			} else if (fruitore.getClass() == Agente.class) {
 				sessionMap.put("agenteLoggato", fruitore);
@@ -71,6 +73,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			addActionError("Qualcosa è andato storto");
 			return ERROR;
 		}
+		
 		return ERROR;
 	}
 
@@ -89,7 +92,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public SessionMap<String, Object> getSessionMap() {
 		return sessionMap;
 	}
@@ -99,11 +102,11 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		sessionMap = (SessionMap) map;
 	}
 	
-	public Map<String, String> getResponse() {
-		return response;
+	public Map<String, Object> getRisposta() {
+		return risposta;
 	}
 	
-	public void setResponse(Map<String, String> response) {
-		this.response = response;
+	public void setRisposta(Map<String, Object> risposta) {
+		this.risposta = risposta;
 	}
 }
