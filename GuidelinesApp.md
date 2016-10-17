@@ -1,3 +1,10 @@
+<h2>Configurazione</h2>
+<p>
+  <b>Server</b><br>
+  <b>IP:</b> <em>127.3.250.1</em><br>
+  <b>Porta:</b> <em>8080</em>
+</p>
+
 <h2>Action Mobile</h2>
 Come chiamare le action dall'app, lista input e output
 <table>
