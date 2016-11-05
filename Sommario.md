@@ -1,5 +1,4 @@
-<h1>Modifiche</h1>
-Terminate le implementazioni per la WebApp, scritto tutto il javadoc (anche ricontrollato) e aggiunto qualche commento per qualche metodo con operazioni meno ordinarie.
+<h1>Sommario</h1>
 
 <h2>Funzionalità implementate tramite Action(s)</h2>
 <ul>
@@ -141,8 +140,8 @@ Terminate le implementazioni per la WebApp, scritto tutto il javadoc (anche rico
       
 
 <h2>Altro</h2>
-Caricata la WebApp sulla macchina virtuale, si può procedere all'interfacciamento tra Android e Struts2.<br>
 <b>Problema!:</b> l'eliminazione dell'immobile non elimina le immagini associate ad esso.<br><br>
+<h2>Accesso</h2>
 <p>
   <b>Accesso lato cliente</b><br>
     <em>indirizzo:</em> /login/<br>
@@ -158,6 +157,6 @@ Caricata la WebApp sulla macchina virtuale, si può procedere all'interfacciamen
 <p>
   <b>Accesso lato amministratore</b><br>
     <em>indirizzo:</em> /admin/<br>
-    <em>email:</em> pompili@gmail.com</br>
+    <em>email:</em> pompili@gmail.com<br>
     <em>password:</em> qwerty1A
 </p>
