@@ -46,6 +46,7 @@ Come chiamare le action dall'app, lista input e output
     <td>String provincia, String citta, String zona, String fasciaPrezzo, String fasciaMQ, String tipologia, String subTipologia</td>
     <td>List&lt;Immobile&gt; immobili</td>
 </table>
+Esempio: http://progettoimmobiliare-teamppp.rhcloud.com/visualizzaImmobiliMobile
 
 Contenuto che può avere la risposta in base all'action mobile
 <table>
