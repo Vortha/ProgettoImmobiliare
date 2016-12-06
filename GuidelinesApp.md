@@ -29,6 +29,12 @@ Come chiamare le action dall'app, lista input e output
     <td>List&lt;Immobile&gt; immobili</td>
   </tr>
   <tr>
+    <td>Visualizza Immobili Preferiti</td>
+    <td>visualizzaPreferitiMobile</td>
+    <td>String email</td>
+    <td>List&lt;Immobile&gt; immobili</td>
+  </tr>
+  <tr>
     <td>Aggiungi immobile ai preferiti</td>
     <td>aggiungiPreferitiMobile</td>
     <td>String email, int idImmobile</td>
