@@ -82,5 +82,5 @@ Contenuto che può avere la risposta in base all'action mobile
 
 <h2>Warning</h2>
 <p>
-Se si richiama <code>rimuoviPreferitiMobile</code> senza parametri, la risposta contiene <code>{"rimozione":true}</code>
+Se si richiama <code>rimuoviPreferitiMobile</code> senza parametri, la risposta contiene <code>{"rimozione":true}</code> (senza rimuove nulla)
 </p>
