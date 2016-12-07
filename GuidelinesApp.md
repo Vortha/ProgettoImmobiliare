@@ -1,4 +1,4 @@
-<a href="http://progettoimmobiliare-teamppp.rhcloud.com/index/" target="_blank">SITO</a>
+<p>Sito: http://progettoimmobiliare-teamppp.rhcloud.com/index/</p>
 
 <h2>Configurazione</h2>
 <p>
