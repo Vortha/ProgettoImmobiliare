@@ -15,7 +15,7 @@ public interface SchedaDiRicercaDAOI {
 	/**
 	 * Dati i parametri, crea una nuova scheda di ricerca.
 	 * 
-	 * @param mappaScheda
+	 * @param scheda
 	 *            - campi compilati dal fruitore
 	 * @return true se la scheda di ricerca è stata creata, false altrimenti
 	 * @throws SQLException
@@ -28,7 +28,7 @@ public interface SchedaDiRicercaDAOI {
 	 * Dato l'id della scheda di ricerca, restituisce la scheda di ricerca che
 	 * si vuole visualizzare.
 	 * 
-	 * @param idSchedaDiRicerca
+	 * @param idScheda
 	 *            - l'id della scheda di ricerca che si vuole visualizzare
 	 * @return SchedaDiRicerca - la scheda di ricerca voluta
 	 * @throws SQLException

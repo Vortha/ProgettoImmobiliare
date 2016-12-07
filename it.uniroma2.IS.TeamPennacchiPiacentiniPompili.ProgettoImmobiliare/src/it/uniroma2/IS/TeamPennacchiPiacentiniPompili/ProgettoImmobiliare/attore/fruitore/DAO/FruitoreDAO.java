@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * Classe DAO che implementa le funzionalità del fruitore. Implementa
+ * Classe DAO che implementa i metodi per la gestione del fruitore. Implementa
  * l'interfaccia FruitoreDAOI.
  * 
  * @author Team Pennacchi Piacentini Pompili

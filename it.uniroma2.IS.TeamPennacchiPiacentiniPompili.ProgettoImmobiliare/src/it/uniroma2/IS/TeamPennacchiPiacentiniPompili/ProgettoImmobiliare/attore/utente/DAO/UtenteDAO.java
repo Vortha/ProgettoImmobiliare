@@ -6,7 +6,7 @@ import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.
 import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.database.DBAccessManager;
 
 /**
- * Classe DAO che implementa le funzionalità dell'utente. Implementa
+ * Classe DAO che implementa i metodi per la gestione degli utenti. Implementa
  * l'interfaccia UtenteDAOI.
  * 
  * @author Team Pennacchi Piacentini Pompili

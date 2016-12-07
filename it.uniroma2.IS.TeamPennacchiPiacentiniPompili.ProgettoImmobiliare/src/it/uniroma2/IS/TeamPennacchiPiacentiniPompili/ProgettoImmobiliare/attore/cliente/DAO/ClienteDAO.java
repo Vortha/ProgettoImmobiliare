@@ -14,7 +14,7 @@ import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.
 import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.fruitore.DAO.FruitoreDAO;
 
 /**
- * Classe DAO che implementa le funzionalità del Cliente. Implementa
+ * Classe DAO che implementa i metodi per la gestione dei clienti. Implementa
  * l'interfaccia ClienteDAOI.
  * 
  * @author Team Pennacchi Piacentini Pompili
@@ -129,7 +129,8 @@ public class ClienteDAO extends FruitoreDAO implements ClienteDAOI {
 	@Override
 	public boolean aggiungiPreferiti(String email, int idImmobile)
 			throws ClassNotFoundException, SQLException {
-		String query = "insert into preferiti values('" + email + "', " + idImmobile + ")";
+		String query = "insert into preferiti values('" + email + "', "
+				+ idImmobile + ")";
 		return update(query);
 	}
 
@@ -139,5 +140,23 @@ public class ClienteDAO extends FruitoreDAO implements ClienteDAOI {
 		String query = "delete from preferiti where email = '" + email
 				+ "' and id_immobile = " + idImmobile;
 		return update(query);
+	}
+
+	public Cliente ottieniCliente(String email) throws ClassNotFoundException,
+			SQLException {
+		String query = "select * from fruitore where email = '" + email
+				+ "' and cliente = true";
+		ResultSet resultSet = select(query);
+		resultSet.next();
+
+		return new Cliente(resultSet.getString("nome"),
+				resultSet.getString("cognome"),
+				resultSet.getString("telefono"), email, "");
+	}
+	
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		ClienteDAO clienteDAO = new ClienteDAO();
+		
+		System.out.println(clienteDAO.ottieniCliente("prova@prova.it"));
 	}
 }

@@ -37,9 +37,6 @@ public class AggiungiPreferitiAction extends ActionSupport {
 		risposta = new HashMap<>();
 		risposta.put("inserimento", false);
 		
-		email = "prova@prova.it";
-		idImmobile = 1;
-		
 		try {
 			clienteDAO.aggiungiPreferiti(email, idImmobile);
 			risposta.put("inserimento", true);

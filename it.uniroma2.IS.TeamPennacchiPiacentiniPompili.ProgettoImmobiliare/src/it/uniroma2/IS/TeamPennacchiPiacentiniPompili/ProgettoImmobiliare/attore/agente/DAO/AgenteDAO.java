@@ -10,7 +10,7 @@ import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.attore.
 import it.uniroma2.IS.TeamPennacchiPiacentiniPompili.ProgettoImmobiliare.database.DBAccessManager;
 
 /**
- * Classe DAO che implementa le funzionalità dell'Agente. Implementa
+ * Classe DAO che implementa i metodi per la gestione degli agenti. Implementa
  * l'interfaccia AgenteDAOI.
  * 
  * @author Team Pennacchi Piacentini Pompili

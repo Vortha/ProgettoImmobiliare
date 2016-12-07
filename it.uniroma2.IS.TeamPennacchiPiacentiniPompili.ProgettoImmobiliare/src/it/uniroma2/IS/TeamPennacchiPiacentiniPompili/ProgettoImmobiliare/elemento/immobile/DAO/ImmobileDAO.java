@@ -16,8 +16,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * Classe DAO che implementa le funzionalità per le operazioni sugli immobili.
- * Implementa l'interfaccia ImmobileDAOI.
+ * Classe DAO che implementa i metodi per la gestione degli immobili. Implementa
+ * l'interfaccia ImmobileDAOI.
  * 
  * @author Team Pennacchi Piacentini Pompili
  * 

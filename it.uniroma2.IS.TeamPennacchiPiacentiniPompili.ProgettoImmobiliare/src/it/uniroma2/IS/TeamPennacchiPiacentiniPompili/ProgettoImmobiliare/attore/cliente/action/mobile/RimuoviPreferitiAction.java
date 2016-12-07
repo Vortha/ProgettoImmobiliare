@@ -36,9 +36,6 @@ public class RimuoviPreferitiAction extends ActionSupport {
 		risposta = new HashMap<>();
 		risposta.put("rimozione", false);
 
-		email = "prova@prova.it";
-		idImmobile = 1;
-		
 		try {
 			clienteDAO.rimuoviPreferiti(email, idImmobile);
 			risposta.put("rimozione", true);

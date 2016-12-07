@@ -49,7 +49,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		risposta = new HashMap<>();
 		
 		risposta.put("connessione", false);
-
+		
 		try {
 			Fruitore fruitore = dao.login(email, password);
 			if (fruitore == null) {
