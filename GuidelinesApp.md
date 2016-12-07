@@ -1,4 +1,4 @@
-<a href="http://progettoimmobiliare-teamppp.rhcloud.com/" target="_blank">SITO</a>
+<a href="http://progettoimmobiliare-teamppp.rhcloud.com/index/" target="_blank">SITO</a>
 
 <h2>Configurazione</h2>
 <p>
@@ -52,7 +52,7 @@ Come chiamare le action dall'app, lista input e output
     <td>String provincia, String citta, String zona, String fasciaPrezzo, String fasciaMQ, String tipologia, String subTipologia</td>
     <td>List&lt;Immobile&gt; immobili</td>
 </table>
-Esempio: http://progettoimmobiliare-teamppp.rhcloud.com/visualizzaImmobiliMobile
+Esempio: http://progettoimmobiliare-teamppp.rhcloud.com/index/visualizzaImmobiliMobile
 
 Contenuto che può avere la risposta in base all'action mobile
 <table>
