@@ -29,6 +29,18 @@ Come chiamare le action dall'app, lista input e output
     <td>List&lt;Immobile&gt; immobili</td>
   </tr>
   <tr>
+    <td>Visualizza Dettagli Immobile</td>
+    <td>visalizzaImmobileMobile</td>
+    <td>int idImmobile</td>
+    <td>Immobile immobile</td>
+  </tr>
+  <tr>
+    <td>Check Preferito Cliente</td>
+    <td>checkPreferitoMobile</td>
+    <td>int idImmobile, String email</td>
+    <td>Map&lt;String, Object&gt; risposta</td>
+  </tr>
+  <tr>
     <td>Visualizza Immobili Preferiti</td>
     <td>visualizzaPreferitiMobile</td>
     <td>String email</td>
@@ -63,6 +75,10 @@ Contenuto che può avere la risposta in base all'action mobile
   <tr>
     <td>loginMobile</td>
     <td>{"connessione":true | false}</td>
+  </tr>
+  <tr>
+    <td>checkPreferitoMobile</td>
+    <td>{"preferito":true | false}</td>
   </tr>
   <tr>
     <td>aggiungiPreferitiMobile</td>
